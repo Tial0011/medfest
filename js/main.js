@@ -11,16 +11,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function initHeroVideo() {
   const video = Utils.qs("[data-hero-video]");
+  const source = Utils.qs("[data-hero-video] source");
   const sound = Utils.qs("[data-hero-sound]");
   const activate = Utils.qs("[data-hero-activate]");
   const soundLabel = Utils.qs("[data-hero-sound-label]");
-  if (!video || !sound || !activate) return;
+  if (!video || !source || !sound || !activate) return;
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    video.removeAttribute("autoplay");
-    video.pause();
     return;
   }
+
+  const connection = navigator.connection;
+  const slowConnection =
+    connection?.saveData ||
+    ["slow-2g", "2g", "3g"].includes(connection?.effectiveType);
+  if (slowConnection) return;
+
+  source.src = source.dataset.src;
+  video.load();
 
   sound.hidden = false;
   const setSoundState = (enabled) => {

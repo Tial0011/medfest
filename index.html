@@ -29,13 +29,15 @@
           <video
             class="hero__video"
             data-hero-video
-            autoplay
             loop
             playsinline
-            preload="metadata"
+            preload="none"
             poster="assets/images/image.png"
           >
-            <source src="assets/videos/medfest-hero.mp4" type="video/mp4" />
+            <source
+              data-src="assets/videos/medfest-hero.mp4"
+              type="video/mp4"
+            />
           </video>
           <div class="hero__overlay"></div>
         </div>

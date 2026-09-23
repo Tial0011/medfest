@@ -1,0 +1,37 @@
+/* ==========================================================================
+   RESPONSIVE OVERRIDES
+   Mobile-first base lives in global.css / components.css.
+   This file holds breakpoint-specific adjustments only.
+   ========================================================================== */
+
+/* Small phones */
+@media (max-width: 400px) {
+  .hero__title {
+    font-size: clamp(2.25rem, 12vw, 3rem);
+  }
+  .btn {
+    padding: 0.85em 1.5em;
+    font-size: var(--fs-2xs);
+  }
+}
+
+/* Tablet */
+@media (min-width: 700px) {
+  .footer__top {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .container {
+    padding-inline: var(--container-pad);
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1440px) {
+  :root {
+    --container-pad: 4rem;
+  }
+}

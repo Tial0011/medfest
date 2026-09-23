@@ -1,0 +1,200 @@
+/* ==========================================================================
+   GLOBAL BASE STYLES
+   ========================================================================== */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 500;
+  overflow-x: hidden;
+}
+
+/* Ambient festival glow — fixed behind all content, cheap (CSS only, no JS/3D) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60vw 60vw at 12% -10%, rgba(251, 3, 118, 0.22), transparent 60%),
+    radial-gradient(70vw 70vw at 110% 20%, rgba(102, 45, 145, 0.35), transparent 60%),
+    var(--color-background);
+  pointer-events: none;
+}
+
+/* Subtle grain overlay so flat gradients feel textured, not sterile */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+p {
+  max-width: 62ch;
+  color: var(--color-text-dim);
+}
+
+a {
+  transition: color var(--transition-fast);
+}
+
+img {
+  border-radius: var(--radius-sm);
+}
+
+/* Visible, brand-colored focus ring everywhere — accessibility floor */
+:focus-visible {
+  outline: 3px solid var(--brand-magenta);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip link — first focusable element, hidden until tabbed to */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-sm);
+  z-index: 999;
+  background: var(--brand-cream);
+  color: var(--color-on-light);
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+/* ---- Layout primitives ---- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+main {
+  display: block;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: 0.9em 1.9em;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover {
+    transform: none;
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-magenta), #ff3f9a);
+  color: var(--brand-cream);
+  box-shadow: var(--shadow-glow-magenta);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 70px rgba(251, 3, 118, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--brand-cream);
+  border: 1.5px solid var(--color-border-glass);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  border-color: var(--brand-cream);
+  background: rgba(255, 244, 210, 0.06);
+}
+
+/* ---- Section placeholder (used by future homepage sections) ---- */
+.section-placeholder {
+  padding-block: var(--space-2xl);
+  text-align: center;
+  border-top: 1px solid var(--color-border-glass);
+}
+
+.section-placeholder__eyebrow {
+  color: var(--brand-magenta);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.section-placeholder ul {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  justify-content: center;
+}
+
+.section-placeholder li {
+  padding: var(--space-3xs) var(--space-sm);
+  border: 1px dashed var(--color-border-glass);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+/* ---- Simple page placeholder (About, Experience, Partners, etc.) ---- */
+.page-placeholder {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding-block: var(--space-3xl) var(--space-2xl);
+}
+
+.page-placeholder .tag {
+  color: var(--brand-magenta);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+}

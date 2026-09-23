@@ -1,0 +1,16 @@
+/* ==========================================================================
+   PAGE-SPECIFIC STYLES
+   Phase 1 only styles the homepage hero + generic placeholder pages.
+   Add a new block here (e.g. "ABOUT PAGE") when a page gets built out.
+   ========================================================================== */
+
+.page-placeholder__title {
+  font-size: var(--fs-2xl);
+  color: var(--brand-cream);
+  max-width: 20ch;
+}
+
+.page-placeholder__desc {
+  font-size: var(--fs-sm);
+  max-width: 50ch;
+}

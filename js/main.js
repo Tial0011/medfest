@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMobileMenu(Utils.qs("#mobile-menu-root"));
   if (typeof renderFooter === "function") renderFooter(Utils.qs("#footer-root"));
   initMobileMenu();
+  initNavbarScroll();
 });
 
 function initMobileMenu() {
@@ -38,4 +39,25 @@ function initMobileMenu() {
       if (focusWasInMenu) Utils.qs(".navbar__logo").focus();
     }
   });
+}
+
+/** Compact the fixed header down-page, and restore it when scrolling upward. */
+function initNavbarScroll() {
+  let previousY = Math.max(0, window.scrollY);
+  let scheduled = false;
+  const update = () => {
+    const currentY = Math.max(0, window.scrollY);
+    if (currentY <= 24) document.body.classList.remove("nav-compact");
+    else if (currentY > 80 && currentY - previousY > 4) document.body.classList.add("nav-compact");
+    else if (previousY - currentY > 4) document.body.classList.remove("nav-compact");
+    if (Math.abs(currentY - previousY) > 4 || currentY <= 24) previousY = currentY;
+    scheduled = false;
+  };
+  document.body.classList.toggle("nav-compact", previousY > 80);
+  window.addEventListener("scroll", () => {
+    if (!scheduled) {
+      scheduled = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
 }

@@ -16,7 +16,7 @@ function renderFooter(mount) {
         <div class="mf-footer__grid">
           <div class="mf-footer__brand">
             <a class="mf-footer__logo" href="${Utils.resolveHref(root, 'index.html')}">
-              <img src="${Utils.resolveHref(root, 'assets/images/medfest-logo.webp')}" alt="MedFest V — Home" width="176" height="96" loading="lazy" decoding="async">
+              <img src="${Utils.resolveHref(root, 'assets/images/medfest-logo-dark.svg')}" alt="MedFest V — Home" width="395" height="211" loading="lazy" decoding="async">
             </a>
             <p class="mf-footer__tagline">The Fifth Chapter.</p>
             <div class="mf-footer__socials">
@@ -43,6 +43,7 @@ function renderFooter(mount) {
     document.querySelector(".navbar__logo")?.focus({ preventScroll: true });
   });
 }
+
 
 
 

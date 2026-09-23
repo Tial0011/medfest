@@ -20,6 +20,39 @@
     <div id="navbar-root" data-root="" data-active="home"></div>
     <div id="mobile-menu-root" data-root="" data-active="home"></div>
   </header>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true">
+        <video class="hero__video" data-hero-video autoplay loop playsinline preload="metadata" poster="assets/images/image.png">
+          <source src="assets/videos/medfest-hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__kicker">The fifth chapter.</p>
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__title-main">MEDFEST V</span>
+            <span class="hero__title-accent">THE FIFTH CHAPTER.</span>
+          </h1>
+          <p class="hero__meta">December 2026 <span aria-hidden="true">·</span> Ondo City</p>
+          <p class="hero__desc">A festival of music, food, culture, business, creativity and unforgettable experiences.</p>
+          <div class="hero__actions">
+            <a class="btn btn-primary" href="pages/contact.html">Get Tickets</a>
+            <a class="btn btn-secondary" href="#experience-preview">Explore MedFest</a>
+          </div>
+        </div>
+      </div>
+      <button class="hero__sound" type="button" data-hero-sound aria-label="Turn sound on" aria-pressed="false" hidden>
+        <svg class="hero__sound-icon hero__sound-icon--on" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
+        <svg class="hero__sound-icon hero__sound-icon--off" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m17 9 4 4m0-4-4 4"/></svg>
+        <span data-hero-sound-label>Sound on</span>
+      </button>
+      <button class="hero__sound-prompt" type="button" data-hero-activate hidden>Tap to experience with sound</button>
+      <a class="hero__scroll" href="#experience-preview"><span class="hero__scroll-line" aria-hidden="true"></span><span>Scroll to experience</span></a>
+    </section>
+    <div id="experience-preview" class="hero__next-anchor" aria-hidden="true"></div>
+  </main>
   <div id="footer-root" data-root=""></div>
   <script src="js/utils.js"></script>
   <script src="data/site.js"></script>

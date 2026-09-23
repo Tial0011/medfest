@@ -5,7 +5,52 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof renderFooter === "function") renderFooter(Utils.qs("#footer-root"));
   initMobileMenu();
   initNavbarScroll();
+  initHeroVideo();
 });
+
+function initHeroVideo() {
+  const video = Utils.qs("[data-hero-video]");
+  const sound = Utils.qs("[data-hero-sound]");
+  const activate = Utils.qs("[data-hero-activate]");
+  const soundLabel = Utils.qs("[data-hero-sound-label]");
+  if (!video || !sound || !activate) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.removeAttribute("autoplay");
+    video.pause();
+    return;
+  }
+
+  sound.hidden = false;
+  const setSoundState = (enabled) => {
+    video.muted = !enabled;
+    sound.setAttribute("aria-pressed", String(enabled));
+    sound.setAttribute("aria-label", enabled ? "Turn sound off" : "Turn sound on");
+    soundLabel.textContent = enabled ? "Sound on" : "Sound off";
+    sound.classList.toggle("is-muted", !enabled);
+  };
+  const enableSound = () => {
+    setSoundState(true);
+    activate.hidden = true;
+    video.play().catch(() => {});
+  };
+
+  setSoundState(true);
+  video.play().catch(() => {
+    setSoundState(false);
+    activate.hidden = false;
+    video.play().catch(() => {});
+  });
+  sound.addEventListener("click", () => {
+    if (video.muted) enableSound();
+    else setSoundState(false);
+  });
+  activate.addEventListener("click", enableSound);
+  video.addEventListener("error", () => {
+    sound.hidden = true;
+    activate.hidden = true;
+  });
+}
 
 function initMobileMenu() {
   const toggle = Utils.qs("[data-menu-toggle]");

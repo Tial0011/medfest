@@ -65,21 +65,38 @@
    --------------------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
-  padding-top: var(--nav-height);
+  isolation: isolate;
   overflow: hidden;
 }
 
-.hero__bg {
+.hero__media,
+.hero__video,
+.hero__overlay {
   position: absolute;
   inset: 0;
-  z-index: -1;
+}
+
+.hero__media {
+  z-index: -2;
+  background: #18091d;
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hero__overlay {
+  z-index: 1;
   background:
-    radial-gradient(50vw 50vw at 80% 15%, rgba(251, 3, 118, 0.35), transparent 65%),
-    radial-gradient(60vw 60vw at 10% 85%, rgba(102, 45, 145, 0.55), transparent 65%),
-    linear-gradient(180deg, #0c0410 0%, #170a1d 60%, #0c0410 100%);
+    linear-gradient(90deg, rgba(7, 2, 11, 0.82) 0%, rgba(13, 3, 17, 0.48) 48%, rgba(8, 2, 10, 0.25) 100%),
+    linear-gradient(0deg, rgba(7, 2, 11, 0.72) 0%, transparent 38%, rgba(7, 2, 11, 0.18) 100%);
+  pointer-events: none;
 }
 
 /* Decorative brand-pattern strip, echoes the doodle marks in the brand doc */
@@ -92,9 +109,13 @@
 }
 
 .hero__content {
+  position: relative;
+  z-index: 2;
   display: grid;
   gap: var(--space-md);
   max-width: 46rem;
+  padding-top: var(--nav-height);
+  padding-bottom: 7rem;
 }
 
 .hero__kicker {
@@ -104,18 +125,27 @@
   color: var(--brand-cream);
   font-size: var(--fs-xs);
   font-weight: 700;
-  padding: var(--space-3xs) var(--space-sm);
-  border-radius: var(--radius-pill);
+  padding-left: 0.8rem;
+  border-left: 2px solid var(--brand-magenta);
   width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
 }
 
 .hero__title {
   font-size: var(--fs-3xl);
   color: var(--brand-cream);
+  text-wrap: balance;
+  text-shadow: 0 4px 36px rgba(0, 0, 0, 0.35);
 }
 
-.hero__title .accent {
+.hero__title-main,
+.hero__title-accent {
   display: block;
+}
+
+.hero__title-accent {
+  margin-left: clamp(0.4rem, 2vw, 2rem);
   color: transparent;
   background: linear-gradient(120deg, var(--brand-magenta), #ff6fb3 60%, var(--brand-cream));
   -webkit-background-clip: text;
@@ -164,6 +194,51 @@
   transform-origin: top;
 }
 
+.hero__sound,
+.hero__sound-prompt {
+  position: absolute;
+  z-index: 3;
+  color: var(--brand-cream);
+  background: rgba(7, 2, 11, 0.34);
+  border: 1px solid rgba(255, 244, 210, 0.32);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero__sound {
+  right: var(--container-pad);
+  bottom: var(--space-lg);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero__sound-icon { width: 1.05rem; height: 1.05rem; }
+.hero__sound-icon--off { display: none; }
+.hero__sound.is-muted .hero__sound-icon--on { display: none; }
+.hero__sound.is-muted .hero__sound-icon--off { display: block; }
+.hero__sound:hover, .hero__sound-prompt:hover { border-color: var(--brand-cream); background: rgba(7, 2, 11, 0.58); }
+
+.hero__sound-prompt {
+  left: 50%;
+  bottom: 5rem;
+  transform: translateX(-50%);
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__sound-prompt:hover { transform: translateX(-50%) translateY(-2px); }
+.hero__next-anchor { height: 1px; }
+
 @keyframes scrollPulse {
   0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
   50% { transform: scaleY(1); opacity: 1; }
@@ -175,11 +250,22 @@
     transform: scaleY(1);
     opacity: 0.7;
   }
+  .hero__video { display: none; }
+  .hero__media { background: center / cover no-repeat url("../assets/images/image.png"); }
+  .hero__sound, .hero__sound-prompt { display: none !important; }
 }
 
 @media (max-width: 560px) {
   .hero__scroll {
     display: none;
+  }
+  .hero__content { padding-bottom: 8rem; }
+  .hero__sound { bottom: 1.25rem; }
+  .hero__sound-prompt { bottom: 4.75rem; white-space: nowrap; }
+  .hero__overlay {
+    background:
+      linear-gradient(90deg, rgba(7, 2, 11, 0.76), rgba(7, 2, 11, 0.3)),
+      linear-gradient(0deg, rgba(7, 2, 11, 0.78), transparent 55%);
   }
 }
 

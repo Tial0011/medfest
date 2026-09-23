@@ -30,7 +30,7 @@ function renderNavbar(mount) {
     <nav class="navbar" data-navbar aria-label="Primary">
       <div class="container navbar__inner">
         <a class="navbar__logo" href="${Utils.resolveHref(root, "index.html")}">
-          <img class="navbar__brand-image" src="${Utils.resolveHref(root, "assets/images/medfest-logo.svg")}" alt="${name} V - Home" width="132" height="72" />
+          <img class="navbar__brand-image" src="${Utils.resolveHref(root, "assets/images/medfest-logo.webp")}" alt="${name} V - Home" width="132" height="72" fetchpriority="high" decoding="async" />
         </a>
         <div class="navbar__links">${links}</div>
         <div class="navbar__actions">
@@ -85,5 +85,6 @@ function renderMobileMenu(mount) {
     </div>
   `;
 }
+
 
 

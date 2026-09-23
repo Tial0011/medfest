@@ -273,3 +273,15 @@
 
 
 
+
+/* Suppress the browser's touch flash; keep :focus-visible for keyboards. */
+.navbar a,
+.navbar button,
+.mobile-menu a {
+  -webkit-tap-highlight-color: transparent;
+}
+.navbar a:focus:not(:focus-visible),
+.navbar button:focus:not(:focus-visible),
+.mobile-menu a:focus:not(:focus-visible) {
+  outline: none;
+}

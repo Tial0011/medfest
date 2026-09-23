@@ -2,7 +2,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   renderNavbar(Utils.qs("#navbar-root"));
   renderMobileMenu(Utils.qs("#mobile-menu-root"));
-  if (typeof renderFooter === "function") renderFooter(Utils.qs("#footer-root"));
+  if (typeof renderFooter === "function")
+    renderFooter(Utils.qs("#footer-root"));
   initMobileMenu();
   initNavbarScroll();
   initHeroVideo();
@@ -25,7 +26,10 @@ function initHeroVideo() {
   const setSoundState = (enabled) => {
     video.muted = !enabled;
     sound.setAttribute("aria-pressed", String(enabled));
-    sound.setAttribute("aria-label", enabled ? "Turn sound off" : "Turn sound on");
+    sound.setAttribute(
+      "aria-label",
+      enabled ? "Turn sound off" : "Turn sound on",
+    );
     soundLabel.textContent = enabled ? "Sound on" : "Sound off";
     sound.classList.toggle("is-muted", !enabled);
   };
@@ -69,21 +73,35 @@ function initMobileMenu() {
     if (event.key === "Escape" && !menu.hidden) setOpen(false, true);
   });
   document.addEventListener("click", (event) => {
-    if (!menu.hidden && !menu.contains(event.target) && !toggle.contains(event.target)) setOpen(false);
+    if (
+      !menu.hidden &&
+      !menu.contains(event.target) &&
+      !toggle.contains(event.target)
+    )
+      setOpen(false);
   });
   document.addEventListener("focusin", (event) => {
-    if (!menu.hidden && !menu.contains(event.target) && !toggle.contains(event.target)) setOpen(false);
+    if (
+      !menu.hidden &&
+      !menu.contains(event.target) &&
+      !toggle.contains(event.target)
+    )
+      setOpen(false);
   });
   menu.addEventListener("click", (event) => {
     if (event.target.closest("a")) setOpen(false);
   });
-  window.matchMedia("(min-width: 1080px)").addEventListener("change", (event) => {
-    if (event.matches) {
-      const focusWasInMenu = menu.contains(document.activeElement) || document.activeElement === toggle;
-      setOpen(false);
-      if (focusWasInMenu) Utils.qs(".navbar__logo").focus();
-    }
-  });
+  window
+    .matchMedia("(min-width: 1080px)")
+    .addEventListener("change", (event) => {
+      if (event.matches) {
+        const focusWasInMenu =
+          menu.contains(document.activeElement) ||
+          document.activeElement === toggle;
+        setOpen(false);
+        if (focusWasInMenu) Utils.qs(".navbar__logo").focus();
+      }
+    });
 }
 
 /** Compact the fixed header down-page, and restore it when scrolling upward. */
@@ -93,16 +111,23 @@ function initNavbarScroll() {
   const update = () => {
     const currentY = Math.max(0, window.scrollY);
     if (currentY <= 24) document.body.classList.remove("nav-compact");
-    else if (currentY > 80 && currentY - previousY > 4) document.body.classList.add("nav-compact");
-    else if (previousY - currentY > 4) document.body.classList.remove("nav-compact");
-    if (Math.abs(currentY - previousY) > 4 || currentY <= 24) previousY = currentY;
+    else if (currentY > 80 && currentY - previousY > 4)
+      document.body.classList.add("nav-compact");
+    else if (previousY - currentY > 4)
+      document.body.classList.remove("nav-compact");
+    if (Math.abs(currentY - previousY) > 4 || currentY <= 24)
+      previousY = currentY;
     scheduled = false;
   };
   document.body.classList.toggle("nav-compact", previousY > 80);
-  window.addEventListener("scroll", () => {
-    if (!scheduled) {
-      scheduled = true;
-      requestAnimationFrame(update);
-    }
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
 }

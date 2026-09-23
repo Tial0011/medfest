@@ -1,4 +1,4 @@
-/**
+﻿/**
  * data/site.js
  * ---------------------------------------------------------------------
  * Centralized, framework-free "data layer" for the MedFest V site.
@@ -33,35 +33,14 @@ const SITE = {
 
   footer: {
     tagline: "A festival of music, food, culture, business, creativity and unforgettable experiences.",
-    columns: [
-      {
-        title: "Explore",
-        links: [
-          { label: "About", href: "pages/about.html" },
-          { label: "Experience", href: "pages/experience.html" },
-          { label: "Partners", href: "pages/partners.html" },
-        ],
-      },
-      {
-        title: "Get Involved",
-        links: [
-          { label: "Get Involved", href: "pages/get-involved.html" },
-          { label: "FAQ", href: "pages/faq.html" },
-          { label: "Contact", href: "pages/contact.html" },
-        ],
-      },
-      {
-        title: "Details",
-        links: [
-          { label: "Date", href: "#", note: "December 2026" },
-          { label: "Location", href: "#", note: "Ondo City" },
-          { label: "Tickets", href: "#", note: "Coming soon" },
-        ],
-      },
+    enquiries: { label: "07045567948", href: "tel:+2347045567948" },
+    email: "medfestunimed@gmail.com",
+    instagram: { handle: "medfestng_", href: "https://www.instagram.com/medfestng_/" },
+    whatsapp: [
+      { label: "07047157003", href: "https://wa.me/2347047157003" },
+      { label: "07045567948", href: "https://wa.me/2347045567948" },
     ],
-    copyright: `© ${new Date().getFullYear()} MedFest. All rights reserved.`,
   },
-
   hero: {
     kicker: "MedFest V · The Fifth Chapter",
     title: ["MEDFEST V", "THE FIFTH CHAPTER."],
@@ -76,3 +55,4 @@ const SITE = {
 
 // Expose to the rest of the (non-module) vanilla JS codebase.
 window.SITE = SITE;
+

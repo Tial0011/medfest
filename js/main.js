@@ -37,7 +37,7 @@ function initHeroSlider() {
   function restartTimer() {
     clearInterval(timer);
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-      timer = setInterval(() => showSlide(currentIndex + 1), 6500);
+      timer = setInterval(() => showSlide(currentIndex + 1), 5000);
   }
 
   slider.addEventListener("mouseenter", () => clearInterval(timer));

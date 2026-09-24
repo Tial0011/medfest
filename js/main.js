@@ -6,62 +6,43 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFooter(Utils.qs("#footer-root"));
   initMobileMenu();
   initNavbarScroll();
-  initHeroVideo();
+  initHeroSlider();
 });
 
-function initHeroVideo() {
-  const video = Utils.qs("[data-hero-video]");
-  const source = Utils.qs("[data-hero-video] source");
-  const sound = Utils.qs("[data-hero-sound]");
-  const activate = Utils.qs("[data-hero-activate]");
-  const soundLabel = Utils.qs("[data-hero-sound-label]");
-  if (!video || !source || !sound || !activate) return;
+function initHeroSlider() {
+  const slider = Utils.qs("[data-hero-slides]");
+  if (!slider) return;
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return;
+  const slides = [...slider.querySelectorAll(".hero__slide")];
+  let currentIndex = 0;
+  let timer;
+
+  function loadSlide(slide) {
+    if (slide.dataset.src) {
+      slide.src = slide.dataset.src;
+      delete slide.dataset.src;
+    }
   }
 
-  const connection = navigator.connection;
-  const slowConnection =
-    connection?.saveData ||
-    ["slow-2g", "2g", "3g"].includes(connection?.effectiveType);
-  if (slowConnection) return;
+  function showSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
+    loadSlide(slides[currentIndex]);
+    loadSlide(slides[(currentIndex + 1) % slides.length]);
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-active", slideIndex === currentIndex);
+    });
+    restartTimer();
+  }
 
-  source.src = source.dataset.src;
-  video.load();
+  function restartTimer() {
+    clearInterval(timer);
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      timer = setInterval(() => showSlide(currentIndex + 1), 6500);
+  }
 
-  sound.hidden = false;
-  const setSoundState = (enabled) => {
-    video.muted = !enabled;
-    sound.setAttribute("aria-pressed", String(enabled));
-    sound.setAttribute(
-      "aria-label",
-      enabled ? "Turn sound off" : "Turn sound on",
-    );
-    soundLabel.textContent = enabled ? "Sound on" : "Sound off";
-    sound.classList.toggle("is-muted", !enabled);
-  };
-  const enableSound = () => {
-    setSoundState(true);
-    activate.hidden = true;
-    video.play().catch(() => {});
-  };
-
-  setSoundState(true);
-  video.play().catch(() => {
-    setSoundState(false);
-    activate.hidden = false;
-    video.play().catch(() => {});
-  });
-  sound.addEventListener("click", () => {
-    if (video.muted) enableSound();
-    else setSoundState(false);
-  });
-  activate.addEventListener("click", enableSound);
-  video.addEventListener("error", () => {
-    sound.hidden = true;
-    activate.hidden = true;
-  });
+  slider.addEventListener("mouseenter", () => clearInterval(timer));
+  slider.addEventListener("mouseleave", restartTimer);
+  showSlide(0);
 }
 
 function initMobileMenu() {

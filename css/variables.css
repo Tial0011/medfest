@@ -2,10 +2,17 @@
    DESIGN TOKENS
    Source of truth: MEDFEST V Brand Presentation (Novura Studios).
    Brand colors:  fb0376 (magenta) · 662d91 (purple) · 000000 (black) · fff4d2 (cream)
-   Brand type:    Display "Nuelis" (hand-drawn/graffiti — not a licensed web font,
-                  so a bold rounded display face stands in until the real font
-                  file is supplied) · Subheading/Body "Poppins"
+  Brand type:    Display "Neulis" · Subheading/Body "Poppins"
    ========================================================================== */
+
+@font-face {
+  font-family: "Nuelis";
+  src: url("../assets/fonts/Neulis%20Font%20Family/Neulis-SemiBold.otf")
+    format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* ---- Brand colors (verbatim from brand doc) ---- */
@@ -15,10 +22,15 @@
   --brand-cream: #fff4d2;
 
   /* ---- Semantic color roles ---- */
-  --color-background: #0c0410;      /* near-black with a purple cast — festival night sky */
-  --color-background-alt: #150819;  /* slightly lifted panel background */
-  --color-surface: #1c0d22;         /* cards, panels */
-  --color-surface-glass: rgba(102, 45, 145, 0.28); /* glassmorphism fill, tinted with brand purple */
+  --color-background: #0c0410; /* near-black with a purple cast — festival night sky */
+  --color-background-alt: #150819; /* slightly lifted panel background */
+  --color-surface: #1c0d22; /* cards, panels */
+  --color-surface-glass: rgba(
+    102,
+    45,
+    145,
+    0.28
+  ); /* glassmorphism fill, tinted with brand purple */
   --color-border-glass: rgba(255, 244, 210, 0.14);
   --color-primary: var(--brand-magenta);
   --color-secondary: var(--brand-purple);
@@ -33,7 +45,7 @@
   --color-text-on-light: #241129;
 
   /* ---- Typography ---- */
-  --font-display: "Baloo 2", "Poppins", system-ui, sans-serif; /* stand-in for brand font "Nuelis" */
+  --font-display: "Nuelis", "Poppins", system-ui, sans-serif;
   --font-body: "Poppins", system-ui, sans-serif;
 
   --fs-2xs: 0.75rem;

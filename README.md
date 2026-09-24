@@ -2,7 +2,7 @@
 
 This is the **Phase 1 foundation** for the MedFest V website: project structure, design
 system, navigation, and the homepage hero. It is intentionally not a full site yet —
-see [What's *not* built yet](#whats-not-built-yet).
+see [What's _not_ built yet](#whats-not-built-yet).
 
 Built with **plain HTML5, CSS3, and vanilla JavaScript only** (no React/Vue/Next/build
 tools), but organized the way a component-based framework project would be, so it stays
@@ -105,11 +105,9 @@ All brand-derived tokens live in `css/variables.css`:
   purple `#662d91`, black `#000000`, cream `#fff4d2`. These are mapped to semantic
   roles (`--color-primary`, `--color-background`, etc.) so future pages theme
   consistently.
-- **Type**: body/subheading use **Poppins**, per the brand doc. The brand's display
-  face ("Nuelis") is a hand-drawn/graffiti logotype and not a distributable web font,
-  so **Baloo 2** (a bold, rounded Google Font) stands in for display headings until a
-  licensed web-font file for Nuelis is supplied — swap the `--font-display` value and
-  the `<link>` in each page's `<head>` when it's available.
+- **Type**: titles use the supplied Neulis SemiBold font, while subheadings use
+  Poppins 600 and body content uses Poppins 500. The font is loaded from
+  `assets/fonts/Neulis Font Family/`.
 - Glassmorphism is applied selectively via the `.glass` utility class (navbar, mobile
   menu, hero kicker pill) — not globally, per the brand direction.
 
@@ -118,8 +116,8 @@ All brand-derived tokens live in `css/variables.css`:
 - Skip link, visible focus rings, semantic landmarks (`nav`, `main`, `footer`).
 - Mobile menu is a proper `role="dialog"` with a focus trap and `Esc`-to-close.
 - All animation respects `prefers-reduced-motion`.
-- No 3D/WebGL — the hero's depth and movement come from CSS gradients, blur, and one
-  inline decorative SVG, which is cheaper and more reliable across devices.
+- No 3D/WebGL or hero video — the hero uses a lazy-loaded image slider, CSS gradients,
+  blur, and one inline decorative SVG, which is cheaper and more reliable across devices.
 
 ## SEO
 
@@ -129,7 +127,7 @@ All brand-derived tokens live in `css/variables.css`:
 domain is confirmed, and note that both files should be **deployed at the site root**
 (`/robots.txt`, `/sitemap.xml`) even though they're authored under `seo/` here.
 
-## What's *not* built yet
+## What's _not_ built yet
 
 By design, this phase stops at the hero. Still to come in later phases:
 

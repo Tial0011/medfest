@@ -356,6 +356,14 @@
   box-shadow: none;
 }
 
+.hero__actions .btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero__actions .btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .hero__scroll {
   position: absolute;
   left: var(--container-pad);

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/pages.css" />
   </head>
   <body class="navigation-only homepage">
     <header>
@@ -111,11 +112,56 @@
           <img src="assets/images/Logos/hero-pattern.png" alt="" />
         </div>
       </div>
-      <div
+      <section
+        class="what-is"
         id="experience-preview"
-        class="hero__next-anchor"
-        aria-hidden="true"
-      ></div>
+        aria-labelledby="what-is-title"
+      >
+        <div class="container">
+          <div class="what-is__intro">
+            <div class="what-is__statement">
+              <p class="section-label">What is MedFest?</p>
+              <h2 id="what-is-title">
+                Not just an event.<br /><em>An experience.</em>
+              </h2>
+            </div>
+            <div class="what-is__copy">
+              <p>
+                MedFest is where music, food, culture and community meet in one
+                unforgettable celebration. It is a living expression of Ondo,
+                made for everyone who wants to feel part of something bigger.
+              </p>
+              <p>
+                Across one electric day, familiar faces become new connections,
+                local stories take centre stage, and every detail invites you to
+                stay a little longer.
+              </p>
+            </div>
+          </div>
+          <div class="what-is__cards" aria-label="The MedFest experience">
+            <article class="what-is__card what-is__card--magenta">
+              <span class="what-is__card-number">01</span>
+              <h3>Music</h3>
+              <p>Big sounds, live energy and the artists who move us.</p>
+            </article>
+            <article class="what-is__card what-is__card--purple">
+              <span class="what-is__card-number">02</span>
+              <h3>Food</h3>
+              <p>A generous table of local flavour, made to be shared.</p>
+            </article>
+            <article class="what-is__card what-is__card--cream">
+              <span class="what-is__card-number">03</span>
+              <h3>Culture</h3>
+              <p>Heritage, creativity and new traditions in the making.</p>
+            </article>
+            <article class="what-is__card what-is__card--black">
+              <span class="what-is__card-number">04</span>
+              <h3>Connection</h3>
+              <p>The people, conversations and moments that stay with you.</p>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
     <div id="footer-root" data-root=""></div>
     <script src="js/utils.js"></script>

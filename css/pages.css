@@ -14,3 +14,137 @@
   font-size: var(--fs-sm);
   max-width: 50ch;
 }
+
+.what-is {
+  padding-block: clamp(5rem, 11vw, 10rem);
+  background: var(--brand-cream);
+  color: var(--color-text-on-light);
+}
+
+.what-is__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  gap: clamp(3rem, 9vw, 10rem);
+  align-items: end;
+}
+
+.section-label {
+  margin-bottom: var(--space-md);
+  color: var(--brand-purple);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.what-is__statement h2 {
+  max-width: 9ch;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  line-height: 0.86;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.what-is__statement em {
+  color: var(--brand-magenta);
+  font-style: normal;
+}
+
+.what-is__copy {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 34rem;
+  padding-bottom: var(--space-2xs);
+  color: #ffffff;
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+}
+
+.what-is__cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: clamp(4rem, 8vw, 8rem);
+  background: rgba(36, 17, 41, 0.22);
+}
+
+.what-is__card {
+  min-height: 15rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.what-is__card-number {
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+
+.what-is__card h3 {
+  margin-top: 3rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.what-is__card p {
+  max-width: 20ch;
+  margin-top: var(--space-sm);
+  font-size: var(--fs-2xs);
+  line-height: 1.6;
+}
+
+.what-is__card--magenta {
+  background: var(--brand-magenta);
+  color: var(--brand-black);
+}
+
+.what-is__card--purple {
+  background: var(--brand-purple);
+  color: var(--brand-cream);
+}
+
+.what-is__card--cream {
+  background: #f1dfb7;
+  color: var(--color-text-on-light);
+}
+
+.what-is__card--black {
+  background: var(--brand-black);
+  color: var(--brand-cream);
+}
+
+@media (max-width: 800px) {
+  .what-is__intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .what-is__copy {
+    max-width: 42rem;
+  }
+
+  .what-is__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .what-is__statement h2 {
+    font-size: clamp(2.8rem, 13vw, 5rem);
+  }
+
+  .what-is__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .what-is__card {
+    min-height: 12rem;
+  }
+}

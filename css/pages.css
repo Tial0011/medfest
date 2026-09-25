@@ -25,7 +25,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
   gap: clamp(3rem, 9vw, 10rem);
-  align-items: end;
+  align-items: center;
 }
 
 .section-label {
@@ -38,7 +38,7 @@
 }
 
 .what-is__statement h2 {
-  max-width: 9ch;
+  max-width: 12ch;
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 8vw, 8rem);
   line-height: 0.86;

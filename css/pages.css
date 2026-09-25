@@ -79,7 +79,6 @@
   padding: clamp(1.25rem, 3vw, 2rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .what-is__card-number {
@@ -92,7 +91,7 @@
 .what-is__card h3 {
   margin-top: 3rem;
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
   line-height: 1;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -100,7 +99,7 @@
 
 .what-is__card p {
   max-width: 20ch;
-  margin-top: var(--space-sm);
+  margin-top: auto;
   color: #ffffff;
   font-size: var(--fs-2xs);
   line-height: 1.6;

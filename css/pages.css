@@ -130,6 +130,10 @@
 }
 
 .what-is__card--magenta p {
+  color: var(--brand-black);
+}
+
+.what-is__card--purple p {
   color: #ffffff;
 }
 

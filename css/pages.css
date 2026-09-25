@@ -139,8 +139,8 @@
 
 .medfest-v {
   padding-block: clamp(5rem, 11vw, 10rem);
-  background: #ffffff;
-  color: var(--brand-black);
+  background: var(--brand-purple);
+  color: #ffffff;
 }
 
 .medfest-v__layout {
@@ -168,13 +168,13 @@
 
 .medfest-v__content p:not(.section-label) {
   max-width: 40ch;
-  color: var(--brand-black);
+  color: #ffffff;
   font-size: var(--fs-sm);
   line-height: 1.8;
 }
 
 .medfest-v__content .medfest-v__lead {
-  color: var(--brand-black);
+  color: #ffffff;
   font-family: var(--font-body);
   font-size: clamp(1.35rem, 2.5vw, 2rem);
   font-weight: 600;

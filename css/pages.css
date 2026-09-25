@@ -184,6 +184,13 @@
 .medfest-v__cta {
   justify-self: start;
   margin-top: var(--space-2xs);
+  color: #ffffff;
+}
+
+.medfest-v__cta:hover,
+.medfest-v__cta:active {
+  background: var(--brand-black);
+  color: #ffffff;
 }
 
 @media (max-width: 800px) {

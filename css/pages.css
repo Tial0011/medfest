@@ -126,7 +126,11 @@
 }
 
 .what-is__card--black p {
-  color: var(--brand-cream);
+  color: #ffffff;
+}
+
+.what-is__card--magenta p {
+  color: #ffffff;
 }
 
 @media (max-width: 800px) {

@@ -61,6 +61,10 @@
   line-height: 1.8;
 }
 
+.what-is__copy p {
+  color: #ffffff;
+}
+
 .what-is__cards {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

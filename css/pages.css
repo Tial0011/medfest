@@ -101,6 +101,7 @@
 .what-is__card p {
   max-width: 20ch;
   margin-top: var(--space-sm);
+  color: #ffffff;
   font-size: var(--fs-2xs);
   line-height: 1.6;
 }

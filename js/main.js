@@ -42,6 +42,7 @@ function initHeroSlider() {
 
   slider.addEventListener("mouseenter", () => clearInterval(timer));
   slider.addEventListener("mouseleave", restartTimer);
+  slides.forEach(loadSlide);
   showSlide(0);
 }
 

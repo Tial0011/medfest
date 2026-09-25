@@ -17,8 +17,8 @@
 
 .what-is {
   padding-block: clamp(5rem, 11vw, 10rem);
-  background: var(--brand-cream);
-  color: var(--color-text-on-light);
+  background: var(--color-background);
+  color: #ffffff;
 }
 
 .what-is__intro {
@@ -30,7 +30,7 @@
 
 .section-label {
   margin-bottom: var(--space-md);
-  color: var(--brand-purple);
+  color: var(--brand-magenta);
   font-size: var(--fs-2xs);
   font-weight: 600;
   letter-spacing: 0.16em;

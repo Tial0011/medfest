@@ -17,8 +17,8 @@
 
 .what-is {
   padding-block: clamp(5rem, 11vw, 10rem);
-  background: var(--color-background);
-  color: #ffffff;
+  background: #ffffff;
+  color: var(--brand-black);
 }
 
 .what-is__intro {
@@ -56,13 +56,13 @@
   gap: var(--space-md);
   max-width: 34rem;
   padding-bottom: var(--space-2xs);
-  color: #ffffff;
+  color: var(--brand-black);
   font-size: var(--fs-sm);
   line-height: 1.8;
 }
 
 .what-is__copy p {
-  color: #ffffff;
+  color: var(--brand-black);
 }
 
 .what-is__cards {
@@ -100,7 +100,7 @@
 .what-is__card p {
   max-width: 20ch;
   margin-top: auto;
-  color: #ffffff;
+  color: var(--brand-black);
   font-size: var(--fs-2xs);
   line-height: 1.6;
 }
@@ -122,6 +122,10 @@
 
 .what-is__card--black {
   background: var(--brand-black);
+  color: var(--brand-cream);
+}
+
+.what-is__card--black p {
   color: var(--brand-cream);
 }
 

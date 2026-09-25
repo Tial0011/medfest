@@ -52,7 +52,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
@@ -64,6 +64,16 @@ p {
 
 a {
   transition: color var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
 }
 
 img {
@@ -87,7 +97,7 @@ img {
   color: var(--color-on-light);
   padding: var(--space-2xs) var(--space-sm);
   border-radius: var(--radius-sm);
-  font-weight: 700;
+  font-weight: 600;
   transition: top var(--transition-fast);
 }
 
@@ -125,7 +135,7 @@ main {
   padding: 0.9em 1.9em;
   border-radius: var(--radius-pill);
   font-family: var(--font-body);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--fs-xs);
   white-space: nowrap;
   transition:
@@ -180,7 +190,7 @@ main {
 
 .section-placeholder__eyebrow {
   color: var(--brand-magenta);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--fs-xs);
   margin-bottom: var(--space-sm);
 }
@@ -214,6 +224,6 @@ main {
 
 .page-placeholder .tag {
   color: var(--brand-magenta);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--fs-xs);
 }

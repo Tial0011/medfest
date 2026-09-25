@@ -39,7 +39,7 @@
   gap: 6px;
   font-family: var(--font-display);
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -1px;
   white-space: nowrap;
 }
@@ -476,7 +476,7 @@
 .footer__logo {
   font-family: var(--font-display);
   font-size: var(--fs-lg);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--brand-cream);
 }
 
@@ -499,7 +499,7 @@
 .footer__col h3 {
   font-family: var(--font-body);
   font-size: var(--fs-2xs);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-muted);
   margin-bottom: var(--space-xs);
   letter-spacing: 0.06em;

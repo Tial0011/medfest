@@ -45,7 +45,7 @@
   --color-text-on-light: #241129;
 
   /* ---- Typography ---- */
-  --font-display: "Nuelis", "Poppins", system-ui, sans-serif;
+  --font-display: "Nuelis", sans-serif;
   --font-body: "Poppins", system-ui, sans-serif;
 
   --fs-2xs: 0.75rem;

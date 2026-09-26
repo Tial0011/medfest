@@ -297,6 +297,197 @@
   line-height: 1.6;
 }
 
+.somewhere-tonight {
+  position: relative;
+  display: flex;
+  min-height: 74vh;
+  padding-block: clamp(2.75rem, 4.5vw, 4.5rem);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17, 4, 16, 0.72) 0%,
+      rgba(26, 6, 28, 0.84) 100%
+    ),
+    url("../assets/images/Logos/hero-pattern.png") center/220px repeat,
+    linear-gradient(180deg, #260b1a 0%, #110611 35%, #050307 100%);
+  color: var(--brand-cream);
+}
+
+.somewhere-tonight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(251, 3, 118, 0.16),
+    transparent 45%
+  );
+  pointer-events: none;
+}
+
+.somewhere-tonight::after {
+  content: "";
+  position: absolute;
+  top: clamp(2.5rem, 6vw, 5rem);
+  right: clamp(2rem, 6vw, 7rem);
+  width: clamp(5rem, 9vw, 9rem);
+  height: clamp(5rem, 9vw, 9rem);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fffdf8 0%,
+    #f8d9ec 28%,
+    rgba(248, 217, 236, 0.45) 40%,
+    rgba(248, 217, 236, 0.06) 70%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 40px rgba(255, 255, 255, 0.12),
+    0 0 80px rgba(251, 3, 118, 0.2);
+  opacity: 0.9;
+  animation: moonFloat 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.somewhere-tonight__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.1rem;
+  align-content: center;
+  margin-top: 1.5rem;
+}
+
+.somewhere-tonight h2 {
+  max-width: 7ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.8vw, 5.8rem);
+  line-height: 0.84;
+  text-transform: uppercase;
+  text-shadow: 0 0 28px rgba(251, 3, 118, 0.28);
+}
+
+.somewhere-tonight h2 em {
+  color: #fbb9dd;
+  font-style: normal;
+}
+
+.somewhere-tonight__intro {
+  max-width: 32ch;
+  color: #f8dbe8;
+  font-size: clamp(1.15rem, 1.8vw, 1.98rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.somewhere-tonight__copy {
+  max-width: 56rem;
+  color: rgba(245, 210, 228, 0.9);
+  font-size: 0.72rem;
+  line-height: 1.8;
+}
+
+.somewhere-tonight__copy strong {
+  color: #fff4fa;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.somewhere-tonight__tagline {
+  margin-top: var(--space-xs);
+  color: #fff1fb;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.9vw, 2.9rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.somewhere-tonight__tagline span {
+  color: #f2bfd9;
+}
+
+.somewhere-tonight__coming-wrap {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  border-block: 1px solid rgba(255, 244, 210, 0.28);
+  background: linear-gradient(
+    90deg,
+    rgba(12, 7, 12, 0.72),
+    rgba(251, 3, 118, 0.18),
+    rgba(12, 7, 12, 0.72)
+  );
+  box-shadow: 0 0 30px rgba(251, 3, 118, 0.18);
+}
+
+.somewhere-tonight__coming-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0.8rem 1.5rem;
+  color: rgba(255, 246, 250, 0.9);
+  font-size: clamp(0.72rem, 1vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation:
+    somewhere-scroll 14s linear infinite,
+    somewhere-glow 2.2s ease-in-out infinite alternate;
+}
+
+.somewhere-tonight__coming-track span {
+  position: relative;
+  display: inline-block;
+  padding-inline: 0.5rem;
+}
+
+.somewhere-tonight__coming-track span::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto -0.45rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: #fff4d2;
+  transform: translateY(-50%);
+  box-shadow: 0 0 14px rgba(255, 244, 210, 0.9);
+}
+
+@keyframes somewhere-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes somewhere-glow {
+  0% {
+    text-shadow: 0 0 12px rgba(251, 3, 118, 0.18);
+    filter: brightness(0.96);
+  }
+  100% {
+    text-shadow:
+      0 0 18px rgba(251, 3, 118, 0.34),
+      0 0 28px rgba(255, 255, 255, 0.18);
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes moonFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.78;
+  }
+  100% {
+    transform: translateY(-12px) scale(1.04);
+    opacity: 1;
+  }
+}
+
 @media (hover: hover) {
   .experience-card:hover img {
     transform: scale(1.06);
@@ -335,11 +526,23 @@
   .experience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .somewhere-tonight__intro {
+    max-width: 22ch;
+  }
 }
 
 @media (max-width: 480px) {
   .what-is__statement h2 {
     font-size: clamp(2.8rem, 13vw, 5rem);
+  }
+
+  .somewhere-tonight h2 {
+    max-width: 7ch;
+  }
+
+  .somewhere-tonight__tagline {
+    font-size: clamp(1.7rem, 9vw, 2.6rem);
   }
 
   .what-is__cards {

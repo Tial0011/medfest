@@ -559,6 +559,124 @@
   text-transform: uppercase;
 }
 
+.journey {
+  padding-block: clamp(5rem, 10vw, 8rem);
+  overflow: hidden;
+  background: var(--brand-purple);
+  color: var(--brand-cream);
+}
+
+.journey__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.7fr);
+  align-items: end;
+  gap: 1.25rem 3rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.journey__intro .section-label {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+  color: var(--brand-cream);
+}
+
+.journey__intro h2 {
+  max-width: 10ch;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.journey__intro h2 em {
+  color: var(--brand-magenta);
+  font-style: normal;
+}
+
+.journey__intro > p:last-child {
+  max-width: 34ch;
+  justify-self: end;
+  color: rgba(255, 244, 210, 0.82);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+}
+
+.journey__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.journey__track::before {
+  content: "";
+  position: absolute;
+  top: -1.45rem;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: rgba(255, 244, 210, 0.4);
+}
+
+.journey__item {
+  position: relative;
+  min-width: 0;
+}
+
+.journey__stop {
+  position: absolute;
+  top: -1.8rem;
+  left: 1rem;
+  z-index: 1;
+  width: 0.7rem;
+  aspect-ratio: 1;
+  border: 2px solid var(--brand-purple);
+  border-radius: 50%;
+  background: var(--brand-magenta);
+  box-shadow: 0 0 0 1px var(--brand-cream);
+}
+
+.journey__item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.journey__copy {
+  padding-top: 1.25rem;
+}
+
+.journey__theme {
+  min-height: 1.2em;
+  color: var(--brand-cream);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.journey__copy h3 {
+  margin-top: 0.35rem;
+  color: var(--brand-magenta);
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1;
+}
+
+.journey__copy > p:last-child {
+  margin-top: 0.6rem;
+  color: rgba(255, 244, 210, 0.78);
+  font-size: var(--fs-2xs);
+  line-height: 1.6;
+}
+
+.journey__item--upcoming .journey__stop {
+  background: var(--brand-cream);
+}
+
 @keyframes somewhere-glow {
   0% {
     text-shadow: 0 0 12px rgba(251, 3, 118, 0.18);
@@ -639,6 +757,30 @@
   .medfest-numbers__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .journey__track {
+    grid-auto-columns: minmax(15rem, 42vw);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 2.5rem 0 1.25rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: var(--brand-magenta) rgba(255, 244, 210, 0.2);
+    scrollbar-width: thin;
+  }
+
+  .journey__track::before {
+    top: 1.35rem;
+  }
+
+  .journey__stop {
+    top: 1rem;
+  }
+
+  .journey__item {
+    scroll-snap-align: start;
+  }
 }
 
 @media (max-width: 480px) {
@@ -676,5 +818,17 @@
 
   .experience-card {
     min-height: 24rem;
+  }
+
+  .journey__intro {
+    grid-template-columns: 1fr;
+  }
+
+  .journey__intro > p:last-child {
+    justify-self: start;
+  }
+
+  .journey__track {
+    grid-auto-columns: minmax(15rem, 82vw);
   }
 }

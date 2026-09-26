@@ -6,7 +6,7 @@
    ========================================================================== */
 
 @font-face {
-  font-family: "Nuelis";
+  font-family: "Neulis";
   src: url("../assets/fonts/Neulis%20Font%20Family/Neulis-SemiBold.otf")
     format("opentype");
   font-weight: 600;
@@ -45,7 +45,7 @@
   --color-text-on-light: #241129;
 
   /* ---- Typography ---- */
-  --font-display: "Nuelis", sans-serif;
+  --font-display: "Neulis", sans-serif;
   --font-body: "Poppins", system-ui, sans-serif;
 
   --fs-2xs: 0.75rem;

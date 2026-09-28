@@ -7,7 +7,41 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initNavbarScroll();
   initHeroSlider();
+  initJourneyScroll();
 });
+
+function initJourneyScroll() {
+  const track = document.querySelector(".journey__track");
+  const controls = document.querySelector(".journey__scroll");
+  if (!track || !controls) return;
+  const range = controls.querySelector("input");
+  const buttons = [...controls.querySelectorAll("button")];
+  const maxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
+  const sync = () => {
+    const max = maxScroll();
+    controls.hidden = max <= 1;
+    range.value = max ? (track.scrollLeft / max) * 100 : 0;
+    controls.style.setProperty("--scroll-thumb", `${Math.max(12, track.clientWidth / track.scrollWidth * 100)}%`);
+    buttons[0].disabled = track.scrollLeft <= 1;
+    buttons[1].disabled = track.scrollLeft >= max - 1;
+  };
+  range.addEventListener("input", () => {
+    track.classList.add("journey__track--scrubbing");
+    track.scrollLeft = (Number(range.value) / 100) * maxScroll();
+  });
+  const endScrub = () => track.classList.remove("journey__track--scrubbing");
+  range.addEventListener("change", endScrub);
+  range.addEventListener("blur", endScrub);
+  buttons.forEach(button => button.addEventListener("click", () => {
+    const cards = track.querySelectorAll(".journey__item");
+    const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth;
+    track.scrollBy({ left: Number(button.dataset.journeyDirection) * step,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }));
+  track.addEventListener("scroll", sync, { passive: true });
+  new ResizeObserver(sync).observe(track);
+  sync();
+}
 
 function initHeroSlider() {
   const slider = Utils.qs("[data-hero-slides]");

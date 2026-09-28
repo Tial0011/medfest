@@ -8,41 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavbarScroll();
   initHeroSlider();
   initJourneyScroll();
-  initScrollReveals();
 });
-
-function initScrollReveals() {
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (reducedMotion.matches || !("IntersectionObserver" in window)) return;
-
-  const animations = new Set();
-  const observer = new IntersectionObserver((entries) => {
-    entries.filter(entry => entry.isIntersecting).forEach((entry, index) => {
-      observer.unobserve(entry.target);
-      if (reducedMotion.matches || typeof entry.target.animate !== "function") return;
-      const animation = entry.target.animate(
-        [{ opacity: 0, transform: "translateY(18px)" },
-          { opacity: 1, transform: "translateY(0)" }],
-        { duration: 620, delay: Math.min(index, 3) * 75,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "backwards" },
-      );
-      animations.add(animation);
-      animation.onfinish = () => animations.delete(animation);
-      animation.oncancel = () => animations.delete(animation);
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll(
-    ".what-is__card, .experience-card, .journey__item, .medfest-number, .for-brands__photo, .for-brands__content, .medfest-v__content",
-  ).forEach(element => observer.observe(element));
-
-  reducedMotion.addEventListener("change", (event) => {
-    if (!event.matches) return;
-    observer.disconnect();
-    animations.forEach(animation => animation.cancel());
-    animations.clear();
-  });
-}
 
 function initJourneyScroll() {
   const track = document.querySelector(".journey__track");

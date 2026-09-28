@@ -727,9 +727,55 @@
   }
 }
 
-@media (hover: hover) {
+@media (prefers-reduced-motion: no-preference) {
+  .what-is__card-image,
+  .experience-card img {
+    transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .what-is__card h3,
+  .experience-card h3,
+  .journey__badge,
+  .journey__edition,
+  .for-brands__cta span {
+    transition: transform 350ms ease;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .what-is__card:hover .what-is__card-image,
   .experience-card:hover img {
-    transform: scale(1.06);
+    transform: scale(1.045);
+  }
+
+  .what-is__card:hover h3,
+  .experience-card:hover h3 {
+    transform: translateY(-3px);
+  }
+
+  .journey__item:hover .journey__badge,
+  .journey__item:hover .journey__edition {
+    transform: translateY(-3px) rotate(-2deg);
+  }
+
+  .for-brands__cta:is(:hover, :focus-visible) span {
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .somewhere-tonight::after,
+  .somewhere-tonight__coming-track {
+    animation: none;
+  }
+
+  .experience-card img,
+  .medfest-number {
+    transition: none;
+  }
+
+  .medfest-number:is(:hover, :focus-visible, :active) {
+    transform: none;
   }
 }
 
@@ -937,4 +983,135 @@
   .journey__track {
     grid-auto-columns: minmax(15rem, 82vw);
   }
+}
+
+/* Brand partnerships */
+.for-brands {
+  padding-block: clamp(4rem, 8vw, 8rem);
+  background: var(--brand-cream);
+  color: var(--brand-black);
+}
+
+.for-brands__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+.for-brands__photo {
+  position: relative;
+  align-self: center;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.for-brands__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+.for-brands__photo::after {
+  content: none;
+  position: absolute;
+  inset: 50% 0 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
+
+.for-brands__photo-label {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--brand-purple);
+  font-size: 0.75rem;
+}
+
+.for-brands h2 {
+  color: var(--brand-black);
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.for-brands h2 em {
+  color: var(--brand-purple);
+  font-style: normal;
+}
+
+.for-brands__intro {
+  margin-top: 1.75rem;
+  max-width: 45ch;
+  color: var(--brand-black);
+  line-height: 1.7;
+}
+
+.for-brands__opportunities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 1.5rem;
+  padding: 0;
+  margin-block: 1.5rem 2rem;
+  list-style: none;
+}
+
+.for-brands__opportunities li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid rgba(102, 45, 145, 0.22);
+  font-size: 0.875rem;
+}
+
+.for-brands__opportunities li::before {
+  content: "";
+  flex: 0 0 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--brand-magenta);
+}
+
+.for-brands__cta { gap: 1.5rem; }
+
+.partnership-page {
+  padding-block: clamp(9rem, 15vw, 13rem) 6rem;
+  min-height: 80vh;
+  background: var(--brand-cream);
+  color: var(--brand-black);
+}
+
+.partnership-page h1 {
+  max-width: 13ch;
+  color: var(--brand-purple);
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.partnership-page p:not(.section-label) {
+  max-width: 60ch;
+  margin-block: 1.5rem;
+  color: var(--brand-black);
+  line-height: 1.8;
+}
+
+.partnership-page__email {
+  display: block;
+  width: fit-content;
+  margin-top: 1.5rem;
+  color: var(--brand-purple);
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 800px) {
+  .for-brands__layout { grid-template-columns: 1fr; }
+  .for-brands__content { grid-row: 1; }
+}
+
+@media (max-width: 480px) {
+  .for-brands__opportunities { grid-template-columns: 1fr; }
+  .for-brands__cta { width: 100%; gap: 0.75rem; }
 }

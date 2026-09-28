@@ -7,8 +7,58 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initNavbarScroll();
   initHeroSlider();
+  initBrandCarousel();
   initJourneyScroll();
 });
+
+function initBrandCarousel() {
+  const carousel = Utils.qs("[data-brand-carousel]");
+  if (!carousel) return;
+
+  const slides = [...carousel.querySelectorAll("[data-brand-slide]")];
+  const currentCount = carousel.querySelector("[data-brand-slide-current]");
+  const totalCount = carousel.querySelector("[data-brand-slide-total]");
+  const previous = carousel.querySelector("[data-brand-previous]");
+  const next = carousel.querySelector("[data-brand-next]");
+  if (slides.length < 2 || !currentCount || !totalCount || !previous || !next)
+    return;
+
+  let activeIndex = 0;
+  let timer;
+  totalCount.textContent = String(slides.length).padStart(2, "0");
+
+  function showSlide(index) {
+    activeIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      slide.hidden = slideIndex !== activeIndex;
+    });
+    currentCount.textContent = String(activeIndex + 1).padStart(2, "0");
+    restartTimer();
+  }
+
+  function restartTimer() {
+    clearInterval(timer);
+    if (
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+      !carousel.matches(":hover") &&
+      !carousel.contains(document.activeElement) &&
+      !document.hidden
+    ) {
+      timer = setInterval(() => showSlide(activeIndex + 1), 5000);
+    }
+  }
+
+  previous.addEventListener("click", () => showSlide(activeIndex - 1));
+  next.addEventListener("click", () => showSlide(activeIndex + 1));
+  carousel.addEventListener("mouseenter", () => clearInterval(timer));
+  carousel.addEventListener("mouseleave", restartTimer);
+  carousel.addEventListener("focusin", () => clearInterval(timer));
+  carousel.addEventListener("focusout", (event) => {
+    if (!carousel.contains(event.relatedTarget)) restartTimer();
+  });
+  document.addEventListener("visibilitychange", restartTimer);
+  showSlide(0);
+}
 
 function initJourneyScroll() {
   const track = document.querySelector(".journey__track");
@@ -21,7 +71,10 @@ function initJourneyScroll() {
     const max = maxScroll();
     controls.hidden = max <= 1;
     range.value = max ? (track.scrollLeft / max) * 100 : 0;
-    controls.style.setProperty("--scroll-thumb", `${Math.max(12, track.clientWidth / track.scrollWidth * 100)}%`);
+    controls.style.setProperty(
+      "--scroll-thumb",
+      `${Math.max(12, (track.clientWidth / track.scrollWidth) * 100)}%`,
+    );
     buttons[0].disabled = track.scrollLeft <= 1;
     buttons[1].disabled = track.scrollLeft >= max - 1;
   };
@@ -32,12 +85,21 @@ function initJourneyScroll() {
   const endScrub = () => track.classList.remove("journey__track--scrubbing");
   range.addEventListener("change", endScrub);
   range.addEventListener("blur", endScrub);
-  buttons.forEach(button => button.addEventListener("click", () => {
-    const cards = track.querySelectorAll(".journey__item");
-    const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth;
-    track.scrollBy({ left: Number(button.dataset.journeyDirection) * step,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-  }));
+  buttons.forEach((button) =>
+    button.addEventListener("click", () => {
+      const cards = track.querySelectorAll(".journey__item");
+      const step =
+        cards.length > 1
+          ? cards[1].offsetLeft - cards[0].offsetLeft
+          : track.clientWidth;
+      track.scrollBy({
+        left: Number(button.dataset.journeyDirection) * step,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+      });
+    }),
+  );
   track.addEventListener("scroll", sync, { passive: true });
   new ResizeObserver(sync).observe(track);
   sync();

@@ -101,12 +101,24 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 35%, rgba(0, 0, 0, 0.5) 65%, rgba(0, 0, 0, 0.92));
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.28),
+    transparent 35%,
+    rgba(0, 0, 0, 0.5) 65%,
+    rgba(0, 0, 0, 0.92)
+  );
 }
 
-.what-is__card--music { --photo-position: 30% center; }
-.what-is__card--food { --photo-position: center 55%; }
-.what-is__card--connection { --photo-position: 40% center; }
+.what-is__card--music {
+  --photo-position: 30% center;
+}
+.what-is__card--food {
+  --photo-position: center 55%;
+}
+.what-is__card--connection {
+  --photo-position: 40% center;
+}
 
 .what-is__card-number {
   align-self: start;
@@ -816,7 +828,11 @@
     display: flex;
     align-items: center;
     min-height: 44px;
-    background: linear-gradient(rgba(255, 244, 210, 0.25), rgba(255, 244, 210, 0.25)) center / 100% 12px no-repeat;
+    background: linear-gradient(
+        rgba(255, 244, 210, 0.25),
+        rgba(255, 244, 210, 0.25)
+      )
+      center / 100% 12px no-repeat;
   }
 
   .journey__scroll-button {
@@ -956,29 +972,209 @@
 .for-brands__photo {
   position: relative;
   align-self: center;
-  isolation: isolate;
+}
+
+.for-brands__slides {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1396 / 772;
   overflow: hidden;
 }
 
-.for-brands__photo img {
-  display: block;
+.for-brands__slide,
+.for-brands__slide > img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+}
+
+.for-brands__slide[hidden] {
+  display: none;
+}
+
+.for-brands__slide {
+  animation: brand-slide-in 450ms ease both;
+}
+
+.for-brands__slide > img {
+  display: block;
+  object-fit: cover;
   border-radius: 0;
 }
 
-.for-brands__photo::after {
-  content: none;
-  position: absolute;
-  inset: 50% 0 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+.for-brands__slide--identity {
+  background: transparent;
 }
 
-.for-brands__photo-label {
+.for-brands__slide--identity > .for-brands__identity-backdrop {
+  z-index: 0;
+  filter: blur(5px) brightness(0.58);
+  transform: scale(1.04);
+}
+
+.for-brands__identity-ghost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: max-content;
+  color: rgba(102, 45, 145, 0.48);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 6rem);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  filter: blur(4px);
+  opacity: 0.55;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.for-brands__identity-logo-tile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: min(82%, 28rem);
+  padding: clamp(0.6rem, 2vw, 1.25rem);
+  background: var(--brand-cream);
+  box-shadow: 0 0.8rem 2rem rgba(35, 17, 52, 0.16);
+  transform: translate(-50%, -50%);
+}
+
+.for-brands__identity-logo {
   display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.for-brands__slide--coming-soon > img {
+  filter: blur(5px) brightness(0.58);
+  transform: scale(1.04);
+}
+
+.for-brands__coming-soon {
+  position: absolute;
+  inset: 12%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  border: 1px solid rgba(255, 244, 210, 0.72);
+  background: rgba(102, 45, 145, 0.72);
+  box-shadow: 0 1rem 3rem rgba(35, 17, 52, 0.18);
+  color: #ffffff;
+  text-align: center;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.for-brands__coming-soon span {
+  color: var(--brand-cream);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.for-brands__coming-soon strong {
+  margin-top: 0.55rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.for-brands__coming-soon p {
+  max-width: 30ch;
   margin-top: 0.75rem;
+  color: #ffffff;
+  font-size: var(--fs-2xs);
+  line-height: 1.5;
+}
+
+.for-brands__carousel-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.for-brands__carousel-arrow {
+  position: absolute;
+  top: 50%;
+  pointer-events: auto;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(102, 45, 145, 0.42);
+  border-radius: 50%;
+  background: rgba(255, 244, 210, 0.4);
   color: var(--brand-purple);
+  font-size: 1.25rem;
+  opacity: 0.68;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
+}
+
+.for-brands__carousel-arrow[data-brand-previous] {
+  left: 1rem;
+}
+
+.for-brands__carousel-arrow[data-brand-next] {
+  right: 1rem;
+}
+
+.for-brands__carousel-arrow:hover {
+  border-color: var(--brand-magenta);
+  background: var(--brand-magenta);
+  color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22);
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.for-brands__carousel-count {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin-top: 0.65rem;
+  padding-inline: 0.1rem;
+  color: var(--brand-black);
   font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.for-brands__carousel-count [data-brand-slide-current] {
+  color: var(--brand-magenta);
+  font-weight: 600;
+}
+
+.for-brands__carousel-arrow:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+@keyframes brand-slide-in {
+  from {
+    opacity: 0.65;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .for-brands h2 {
@@ -1027,7 +1223,9 @@
   background: var(--brand-magenta);
 }
 
-.for-brands__cta { gap: 1.5rem; }
+.for-brands__cta {
+  gap: 1.5rem;
+}
 
 .partnership-page {
   padding-block: clamp(9rem, 15vw, 13rem) 6rem;
@@ -1061,11 +1259,20 @@
 }
 
 @media (max-width: 800px) {
-  .for-brands__layout { grid-template-columns: 1fr; }
-  .for-brands__content { grid-row: 1; }
+  .for-brands__layout {
+    grid-template-columns: 1fr;
+  }
+  .for-brands__content {
+    grid-row: 1;
+  }
 }
 
 @media (max-width: 480px) {
-  .for-brands__opportunities { grid-template-columns: 1fr; }
-  .for-brands__cta { width: 100%; gap: 0.75rem; }
+  .for-brands__opportunities {
+    grid-template-columns: 1fr;
+  }
+  .for-brands__cta {
+    width: 100%;
+    gap: 0.75rem;
+  }
 }

@@ -28,7 +28,7 @@ const SITE = {
   ],
 
   ticketsCta: {
-    label: "Tickets Soon",
+    label: "Tickets",
     href: "#tickets", // opens the "tickets coming soon" popup (js/tickets.js)
   },
 
@@ -48,7 +48,7 @@ const SITE = {
     meta: "December 2026 · Ondo City",
     description:
       "A festival of music, food, culture, business, creativity and unforgettable experiences.",
-    primaryCta: { label: "Tickets Soon", href: "#tickets" },
+    primaryCta: { label: "Tickets", href: "#tickets" },
     secondaryCta: { label: "Explore MedFest", href: "#experience-preview" },
     scrollLabel: "Scroll to Experience",
   },

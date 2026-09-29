@@ -35,9 +35,16 @@ function renderFooter(mount) {
             </div>
           </div>
           <nav class="mf-footer__nav" aria-label="Footer navigation">
-            <ul>${nav.map((item) => `<li><a href="${Utils.resolveHref(root, item.href)}">${item.label}</a></li>`).join("")}
-              <li><a data-tickets href="#tickets">${ticketsCta.label}</a></li>
-            </ul>
+            <div class="mf-footer__group">
+              <p class="mf-footer__heading">Explore</p>
+              <ul>${nav.slice(0, 4).map((item) => `<li><a href="${Utils.resolveHref(root, item.href)}">${item.label}</a></li>`).join("")}</ul>
+            </div>
+            <div class="mf-footer__group">
+              <p class="mf-footer__heading">Connect</p>
+              <ul>${nav.slice(4).map((item) => `<li><a href="${Utils.resolveHref(root, item.href)}">${item.label}</a></li>`).join("")}
+                <li><a data-tickets href="#tickets">${ticketsCta.label}</a></li>
+              </ul>
+            </div>
           </nav>
         </div>
         <div class="mf-footer__bottom"><small>© ${new Date().getFullYear()} MedFest. All rights reserved.</small><button class="mf-footer__top" type="button">Back to top <span aria-hidden="true">↑</span></button></div>

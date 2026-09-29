@@ -219,3 +219,12 @@
 .mf-footer__nav a:active {
   color: #ffffff;
 }
+
+/* Footer nav: two labelled groups with a divider (looks organised, same design) */
+.mf-footer__nav{display:grid;grid-template-columns:auto auto;column-gap:clamp(20px,4vw,56px)}
+.mf-footer__group+.mf-footer__group{padding-left:clamp(20px,4vw,56px);border-left:1px solid rgba(251,3,118,.45)}
+.mf-footer__heading{margin-bottom:6px;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-magenta)}
+@media (max-width:420px){
+  .mf-footer__nav{grid-template-columns:1fr;row-gap:12px}
+  .mf-footer__group+.mf-footer__group{padding-left:0;border-left:0;padding-top:12px;border-top:1px solid rgba(251,3,118,.45)}
+}

@@ -1,47 +1,31 @@
-/* Scroll-reveal + light parallax for the whole site (vanilla JS). */
+/* Light scroll-reveal for PHOTOS only (text stays still). Vanilla JS, cheap on phones. */
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce || !("IntersectionObserver" in window)) return;
   document.documentElement.classList.add("js-motion");
 
-  function tag() {
-    var sel = [
-      "main h2","main .section-label","main section p","main figure","main article",
-      "main .btn","main .gallery img","main .journey__edition","main .medfest-number",
-      "main li"
-    ].join(",");
-    var seen = new Set();
-    document.querySelectorAll(sel).forEach(function (el) {
-      if (el.closest(".hero, .hero__media, [data-hero-slides], .xp-hero__pics, .xp-marquee, .navbar, .somewhere-tonight__track")) return;
-      if (el.hasAttribute("data-reveal")) { seen.add(el); return; }
-      if (el.closest("[data-reveal]")) return; // parent already animates
-      el.setAttribute("data-reveal", "");
-      seen.add(el);
-    });
-    // stagger siblings
-    var groups = new Map();
-    seen.forEach(function (el) {
-      var p = el.parentElement;
-      if (!groups.has(p)) groups.set(p, []);
-      groups.get(p).push(el);
-    });
-    groups.forEach(function (list) {
-      list.forEach(function (el, i) { el.style.setProperty("--reveal-delay", Math.min(i, 6) * 90 + "ms"); });
-    });
-    return seen;
-  }
-
   function start() {
-    var els = tag();
+    var sel = "main figure, main article, main .gallery img, main .journey__edition";
+    var skip = ".hero, .hero__media, [data-hero-slides], .xp-hero__pics, .navbar, .somewhere-tonight__track";
+    var els = [];
+    // Elements already tagged in the HTML must be observed too (this was the "invisible cards" bug)
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { els.push(el); });
+    document.querySelectorAll(sel).forEach(function (el) {
+      if (el.closest(skip) || el.hasAttribute("data-reveal") || (el.parentElement && el.parentElement.closest("[data-reveal]"))) return;
+      if (!el.querySelector("img") && el.tagName !== "IMG") return; // only things with pictures
+      el.setAttribute("data-reveal", "");
+      els.push(el);
+    });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
     els.forEach(function (el) { io.observe(el); });
 
-    // light parallax on experience photos
-    var photos = document.querySelectorAll(".xp-photo img");
+    // Gentle photo drift on scroll: desktop with a mouse only (skipped on phones/tablets)
+    var fine = window.matchMedia("(hover: hover) and (min-width: 900px)").matches;
+    var photos = fine ? document.querySelectorAll(".xp-photo img") : [];
     if (photos.length) {
       var ticking = false;
       window.addEventListener("scroll", function () {
@@ -51,8 +35,7 @@
           photos.forEach(function (img) {
             var r = img.parentElement.getBoundingClientRect();
             if (r.bottom < 0 || r.top > vh) return;
-            var p = (r.top + r.height / 2 - vh / 2) / vh;
-            img.style.objectPosition = "50% " + (50 + p * 18) + "%";
+            img.style.objectPosition = "50% " + (50 + ((r.top + r.height / 2 - vh / 2) / vh) * 12) + "%";
           });
           ticking = false;
         });

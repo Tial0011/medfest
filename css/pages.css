@@ -2479,3 +2479,11 @@ body.lightbox-open { overflow: hidden; }
   font-size: inherit;
   font-weight: 600;
 }
+
+/* For brands: partner button (square, brand magenta) */
+.for-brands__actions{display:flex;margin-top:.5rem}
+.for-brands__cta{display:inline-flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.15rem 1.6rem;border-radius:0;background:var(--brand-magenta);color:#fff;font-family:var(--font-display);font-weight:600;font-size:clamp(1.05rem,1.6vw,1.3rem);text-transform:uppercase;letter-spacing:.02em;box-shadow:6px 6px 0 var(--brand-purple);transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s ease}
+.for-brands__cta-icon{font-family:var(--font-body);font-size:1.5rem;line-height:1;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.for-brands__cta:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--brand-purple)}
+@media (hover:hover){.for-brands__cta:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--brand-purple)}.for-brands__cta:hover .for-brands__cta-icon{transform:translateX(6px)}}
+@media (max-width:480px){.for-brands__cta{width:100%}}

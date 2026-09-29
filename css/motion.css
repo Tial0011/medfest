@@ -1,28 +1,17 @@
-/* SITE-WIDE MOTION — small, tasteful animations. Uses individual transform
-   properties (translate/scale) so existing transforms are not overridden. */
-html.js-motion body{animation:mfPageIn .7s ease both}
-@keyframes mfPageIn{from{opacity:0}to{opacity:1}}
+/* SITE-WIDE MOTION — kept light. Mostly on photos; text stays still.
+   Uses individual transform props (translate/scale) so nothing else is overridden. */
+html.js-motion [data-reveal]{opacity:0;translate:0 18px;transition:opacity .6s ease,translate .6s cubic-bezier(.22,1,.36,1)}
+html.js-motion [data-reveal].is-visible{opacity:1;translate:0 0}
+/* photo eases from slightly zoomed to normal as it appears */
+html.js-motion [data-reveal] img{scale:1.06;transition:scale 1.1s cubic-bezier(.22,1,.36,1)}
+html.js-motion [data-reveal].is-visible img{scale:1}
 
-html.js-motion [data-reveal]{opacity:0;translate:0 36px;scale:.97;transition:opacity .8s ease,translate .8s cubic-bezier(.22,1,.36,1),scale .8s cubic-bezier(.22,1,.36,1);transition-delay:var(--reveal-delay,0ms)}
-html.js-motion [data-reveal].is-visible{opacity:1;translate:0 0;scale:1}
-
-/* Photo life: gentle zoom-in when revealed + lift and zoom on hover */
-main img:not([src*="hero-pattern"]){transition:transform .8s cubic-bezier(.22,1,.36,1),filter .5s ease}
-html.js-motion figure[data-reveal] img,html.js-motion [data-reveal] > img{scale:1.12;transition:scale 1.4s cubic-bezier(.22,1,.36,1)}
-html.js-motion figure[data-reveal].is-visible img,html.js-motion [data-reveal].is-visible > img{scale:1}
-main figure:hover img,main .gallery img:hover{filter:saturate(1.15) contrast(1.03)}
-.gallery img,.gallery figure{transition:transform .5s cubic-bezier(.22,1,.36,1)}
-.gallery img:hover{transform:scale(1.04) rotate(-.6deg)}
-
-.btn{position:relative;overflow:hidden}
-.btn-primary:hover{animation:mfPulse 1s ease infinite}
-@keyframes mfPulse{50%{box-shadow:0 0 90px rgba(251,3,118,.7)}}
-
-.section-label{position:relative}
+/* Hover effects only where a real hover exists (not on touch) */
+@media (hover:hover){
+  .gallery img{transition:transform .5s cubic-bezier(.22,1,.36,1)}
+  .gallery img:hover{transform:scale(1.03)}
+}
 
 @media (prefers-reduced-motion:reduce){
-  html.js-motion body{animation:none}
-  html.js-motion [data-reveal]{opacity:1;translate:none;scale:1;transition:none}
-  html.js-motion figure[data-reveal] img{scale:1;transition:none}
-  .btn-primary:hover{animation:none}
+  html.js-motion [data-reveal],html.js-motion [data-reveal] img{opacity:1;translate:none;scale:1;transition:none}
 }

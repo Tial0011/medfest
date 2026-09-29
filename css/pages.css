@@ -1614,6 +1614,7 @@
   gap: clamp(0.5rem, 2vw, 1.5rem);
   height: clamp(15rem, 28vw, 22rem);
   margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(3rem, 5vw, 4.25rem);
   padding-bottom: 3.25rem;
   border-bottom: 2px solid var(--brand-black);
   position: relative;
@@ -1630,7 +1631,10 @@
 
 .about-growth__fill {
   display: block;
-  order: 2;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   height: var(--h);
   min-height: 0;
   border-radius: 0.5rem 0.5rem 0 0;
@@ -1643,7 +1647,10 @@
 }
 
 .about-growth__value {
-  order: 1;
+  position: absolute;
+  right: 0;
+  bottom: var(--h);
+  left: 0;
   margin-bottom: 0.4rem;
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 4vw, 3.25rem);
@@ -1762,9 +1769,8 @@
 
 .about-thanks__layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  align-items: center;
-  gap: clamp(2rem, 7vw, 6rem);
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 52rem;
 }
 
 .about-thanks .section-label {

@@ -24,11 +24,12 @@ const SITE = {
     { label: "Partners", href: "pages/partners.html", match: "partners" },
     { label: "Get Involved", href: "pages/get-involved.html", match: "get-involved" },
     { label: "FAQ", href: "pages/faq.html", match: "faq" },
+    { label: "Contact", href: "pages/contact.html", match: "contact" },
   ],
 
   ticketsCta: {
-    label: "Get Tickets",
-    href: "pages/contact.html", // placeholder destination until ticketing exists
+    label: "Tickets Soon",
+    href: "#tickets", // opens the "tickets coming soon" popup (js/tickets.js)
   },
 
   footer: {
@@ -47,7 +48,7 @@ const SITE = {
     meta: "December 2026 · Ondo City",
     description:
       "A festival of music, food, culture, business, creativity and unforgettable experiences.",
-    primaryCta: { label: "Get Tickets", href: "pages/contact.html" },
+    primaryCta: { label: "Tickets Soon", href: "#tickets" },
     secondaryCta: { label: "Explore MedFest", href: "#experience-preview" },
     scrollLabel: "Scroll to Experience",
   },

@@ -36,7 +36,7 @@ function renderFooter(mount) {
           </div>
           <nav class="mf-footer__nav" aria-label="Footer navigation">
             <ul>${nav.map((item) => `<li><a href="${Utils.resolveHref(root, item.href)}">${item.label}</a></li>`).join("")}
-              <li><a href="${Utils.resolveHref(root, ticketsCta.href)}">${ticketsCta.label}</a></li>
+              <li><a data-tickets href="#tickets">${ticketsCta.label}</a></li>
             </ul>
           </nav>
         </div>

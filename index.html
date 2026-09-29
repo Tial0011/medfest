@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" as="image" href="assets/images/hero/hero-1-1280.webp" imagesrcset="assets/images/hero/hero-1-720.webp 720w, assets/images/hero/hero-1-1280.webp 1280w" imagesizes="100vw" fetchpriority="high" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/global.css" />
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="css/pages.css" />
     <link rel="stylesheet" href="css/motion.css" />
     <link rel="stylesheet" href="css/desktop.css" />
+    <link rel="stylesheet" href="css/tickets.css" />
   </head>
   <body class="navigation-only homepage">
     <header>
@@ -30,46 +32,12 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__media" aria-hidden="true">
           <div class="hero__slides" data-hero-slides>
-            <img
-              class="hero__slide is-active"
-              data-src="assets/images/Medfest 4/WhatsApp Image 2026-09-23 at 17.01.08 (3).jpeg"
-              alt=""
-            />
-            <img
-              class="hero__slide"
-              data-src="assets/images/Medfest 3/WhatsApp Image 2026-09-23 at 16.45.55 (3).jpeg"
-              alt=""
-            />
-            <img
-              class="hero__slide"
-              data-src="assets/images/Medfest 3/WhatsApp Image 2026-09-23 at 16.45.56 (2).jpeg"
-              alt=""
-            />
-            <img
-              class="hero__slide"
-              data-src="assets/images/Medfest 3/WhatsApp Image 2026-09-23 at 16.45.55 (4).jpeg"
-              alt=""
-            />
-            <img
-              class="hero__slide"
-              data-src="assets/images/Medfest 3/WhatsApp Image 2026-09-23 at 16.45.56 (4).jpeg"
-              alt=""
-            />
-            <img
-              class="hero__slide"
-              data-src="assets/images/Medfest 4/WhatsApp Image 2026-09-23 at 17.01.05 (1).jpeg"
-              alt=""
-            />
-            <img
-              class="hero__slide"
-              data-src="assets/images/Medfest 4/WhatsApp Image 2026-09-23 at 17.01.06 (2).jpeg"
-              alt=""
-            />
-            <img
-              class="hero__slide"
-              data-src="assets/images/Medfest 4/WhatsApp Image 2026-09-23 at 17.01.11.jpeg"
-              alt=""
-            />
+            <img class="hero__slide is-active" src="assets/images/hero/hero-1-1280.webp" srcset="assets/images/hero/hero-1-720.webp 720w, assets/images/hero/hero-1-1280.webp 1280w" sizes="100vw" width="1280" height="867" fetchpriority="high" decoding="async" alt="" style="object-position:center 40%" />
+            <img class="hero__slide" data-src="assets/images/hero/hero-2-1280.webp" data-srcset="assets/images/hero/hero-2-720.webp 720w, assets/images/hero/hero-2-1280.webp 1280w" sizes="100vw" decoding="async" alt="" style="object-position:center 35%" />
+            <img class="hero__slide" data-src="assets/images/hero/hero-3-1280.webp" data-srcset="assets/images/hero/hero-3-720.webp 720w, assets/images/hero/hero-3-1280.webp 1280w" sizes="100vw" decoding="async" alt="" style="object-position:center 35%" />
+            <img class="hero__slide" data-src="assets/images/hero/hero-4-1280.webp" data-srcset="assets/images/hero/hero-4-720.webp 720w, assets/images/hero/hero-4-1280.webp 1280w" sizes="100vw" decoding="async" alt="" style="object-position:center 40%" />
+            <img class="hero__slide" data-src="assets/images/hero/hero-5-1280.webp" data-srcset="assets/images/hero/hero-5-720.webp 720w, assets/images/hero/hero-5-1280.webp 1280w" sizes="100vw" decoding="async" alt="" style="object-position:center 25%" />
+            <img class="hero__slide" data-src="assets/images/hero/hero-6-1280.webp" data-srcset="assets/images/hero/hero-6-720.webp 720w, assets/images/hero/hero-6-1280.webp 1280w" sizes="100vw" decoding="async" alt="" style="object-position:center 35%" />
           </div>
           <div class="hero__overlay"></div>
         </div>
@@ -88,9 +56,7 @@
               unforgettable experiences.
             </p>
             <div class="hero__actions">
-              <a class="btn btn-primary" href="pages/contact.html"
-                >Get Tickets</a
-              >
+              <a class="btn btn-primary" data-tickets href="#tickets">Tickets Soon</a>
               <a class="btn btn-secondary" href="#experience-preview"
                 >Explore MedFest</a
               >
@@ -779,7 +745,7 @@
           </div>
           <div class="ticket-cta__ticket">
             <div class="ticket-cta__top">
-              <p class="ticket-cta__label">MedFest V &middot; Admit you</p>
+              <p class="ticket-cta__label">MedFest V &middot; Admits you</p>
               <ul class="ticket-cta__bring">
                 <li><span aria-hidden="true">01</span><span class="ticket-cta__line">Bring your <strong>friends.</strong></span></li>
                 <li><span aria-hidden="true">02</span><span class="ticket-cta__line">Bring your <strong>energy.</strong></span></li>
@@ -788,8 +754,8 @@
             </div>
             <div class="ticket-cta__stub">
               <p class="ticket-cta__rest">We&rsquo;ll handle the rest.</p>
-              <a class="btn ticket-cta__button" href="pages/contact.html"
-                >Get Tickets <span aria-hidden="true">&rarr;</span></a
+              <a class="btn ticket-cta__button" data-tickets href="#tickets"
+                >Tickets Soon <span aria-hidden="true">&rarr;</span></a
               >
               <span class="ticket-cta__barcode" aria-hidden="true"></span>
             </div>
@@ -816,5 +782,6 @@
     <script src="components/footer.js"></script>
     <script src="js/main.js"></script>
     <script src="js/motion.js"></script>
+    <script src="js/tickets.js"></script>
   </body>
 </html>

@@ -1,0 +1,14 @@
+.tk-dialog{border:0;padding:clamp(1.75rem,4vw,2.75rem);width:min(92vw,32rem);border-radius:1rem;background:var(--brand-purple);color:#fff;box-shadow:0 30px 80px rgba(0,0,0,.5);margin:auto}
+.tk-dialog::backdrop{background:rgba(7,2,11,.7)}
+.tk-dialog[open]{animation:tkIn .35s cubic-bezier(.22,1,.36,1)}
+@keyframes tkIn{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+.tk-close{position:absolute;top:.75rem;right:1rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--brand-cream);color:var(--brand-black);font-size:1.5rem;line-height:1;cursor:pointer}
+.tk-kicker{font-family:var(--font-body);font-weight:600;font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--brand-cream);margin-bottom:1rem}
+.tk-dialog h2{font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:clamp(2.2rem,7vw,3.4rem);line-height:.9;margin-bottom:1rem;color:#fff}
+.tk-dialog h2 em{font-style:normal;color:var(--brand-magenta)}
+.tk-text{font-family:var(--font-body);font-weight:500;line-height:1.6;color:rgba(255,255,255,.92);margin-bottom:1.5rem;max-width:none}
+.tk-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.tk-btn{display:inline-block;padding:.9rem 1.4rem;font-family:var(--font-body);font-weight:600;font-size:.95rem;text-align:center}
+.tk-btn--main{background:var(--brand-magenta);color:#fff}
+.tk-btn--alt{background:var(--brand-cream);color:var(--brand-black)}
+@media (max-width:480px){.tk-btn{width:100%}}

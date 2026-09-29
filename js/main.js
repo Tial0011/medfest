@@ -114,6 +114,10 @@ function initHeroSlider() {
   let timer;
 
   function loadSlide(slide) {
+    if (slide.dataset.srcset) {
+      slide.srcset = slide.dataset.srcset;
+      delete slide.dataset.srcset;
+    }
     if (slide.dataset.src) {
       slide.src = slide.dataset.src;
       delete slide.dataset.src;
@@ -138,7 +142,6 @@ function initHeroSlider() {
 
   slider.addEventListener("mouseenter", () => clearInterval(timer));
   slider.addEventListener("mouseleave", restartTimer);
-  slides.forEach(loadSlide);
   showSlide(0);
 }
 

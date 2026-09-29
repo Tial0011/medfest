@@ -34,7 +34,7 @@ function renderNavbar(mount) {
         </a>
         <div class="navbar__links">${links}</div>
         <div class="navbar__actions">
-          <a class="btn btn-primary navbar__tickets" href="${Utils.resolveHref(root, ticketsCta.href)}">
+          <a class="btn btn-primary navbar__tickets" data-tickets href="#tickets">
             ${ticketsCta.label}
           </a>
           <button
@@ -78,7 +78,7 @@ function renderMobileMenu(mount) {
     >
       <div class="mobile-menu__links">
         ${links}
-        <a class="btn btn-primary mobile-menu__cta" href="${Utils.resolveHref(root, ticketsCta.href)}">
+        <a class="btn btn-primary mobile-menu__cta" data-tickets href="#tickets">
           ${ticketsCta.label}
         </a>
       </div>

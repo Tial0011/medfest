@@ -2493,3 +2493,6 @@ body.lightbox-open { overflow: hidden; }
 .for-brands__cta:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--brand-purple)}
 @media (hover:hover){.for-brands__cta:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--brand-purple)}.for-brands__cta:hover .for-brands__cta-icon{transform:translateX(6px)}}
 @media (max-width:480px){.for-brands__cta{width:100%}}
+
+/* About: special mentions line */
+.about-note__mentions{font-weight:600;color:var(--brand-purple)}

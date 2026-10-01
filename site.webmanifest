@@ -1,0 +1,17 @@
+{
+  "name": "MedFest Nigeria (MedFestNG)",
+  "short_name": "MedFest",
+  "description": "MedFest V - The Fifth Chapter. Festival in Ondo City, Nigeria, December 2026.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#fffdeb",
+  "theme_color": "#662d91",
+  "lang": "en-NG",
+  "icons": [
+    { "src": "/assets/icons/favicon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/icons/icon-192-maskable.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

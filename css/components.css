@@ -191,9 +191,16 @@
   min-height: calc(92svh - var(--nav-height));
   margin-top: var(--nav-height);
   display: flex;
-  align-items: center;
+  align-items: stretch;
   isolation: isolate;
   overflow: hidden;
+}
+
+/* Hero inner fills the full hero height so the content can be spread out:
+   kicker at the top, headline + description in the middle, buttons at the bottom */
+.hero__inner {
+  display: flex;
+  flex-direction: column;
 }
 
 .hero__media,
@@ -241,9 +248,9 @@
   background:
     linear-gradient(
       90deg,
-      rgba(7, 2, 11, 0.82) 0%,
-      rgba(13, 3, 17, 0.48) 48%,
-      rgba(8, 2, 10, 0.25) 100%
+      rgba(7, 2, 11, 0.86) 0%,
+      rgba(13, 3, 17, 0.5) 50%,
+      rgba(8, 2, 10, 0.18) 100%
     ),
     linear-gradient(
       0deg,
@@ -257,68 +264,97 @@
 .hero__content {
   position: relative;
   z-index: 2;
-  display: grid;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-md);
-  max-width: 46rem;
-  padding-top: 0;
+  width: 100%;
+  padding-top: clamp(1.5rem, 4vh, 3rem);
   padding-bottom: 7rem;
+}
+
+/* free space is shared between these two auto margins:
+   top item stays top, buttons drop to the bottom, headline sits in the middle */
+.hero__kicker {
+  margin-bottom: auto;
+}
+
+.hero__actions {
+  margin-top: auto;
 }
 
 .hero__kicker {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2xs);
-  color: var(--brand-cream);
-  font-size: var(--fs-xs);
-  font-family: var(--font-body);
-  font-weight: 600;
-  padding-left: 0.8rem;
-  border-left: 2px solid var(--brand-magenta);
+  gap: 0.65rem;
   width: fit-content;
-  text-transform: uppercase;
+  padding: 0.55rem 1.05rem 0.55rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 244, 210, 0.12);
+  border: 1px solid rgba(255, 244, 210, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--brand-cream);
+  font-family: var(--font-body);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  line-height: 1;
   letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero__kicker-dot {
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--brand-magenta);
+  animation: heroDot 2s ease-out infinite;
+}
+
+@keyframes heroDot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 3, 118, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 0.6rem rgba(251, 3, 118, 0);
+  }
 }
 
 .hero__title {
+  display: grid;
+  justify-items: start;
+  gap: 0.9rem;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: var(--fs-3xl);
   color: var(--brand-cream);
-  text-wrap: balance;
-  text-shadow: 0 4px 36px rgba(0, 0, 0, 0.35);
-}
-
-.hero__title-main,
-.hero__title-accent {
-  display: block;
-  white-space: nowrap;
+  text-shadow: 0 6px 40px rgba(0, 0, 0, 0.4);
 }
 
 .hero__title-main {
-  font-size: clamp(1.8rem, 6.5vw, 5rem);
-  line-height: 1;
+  display: block;
+  white-space: nowrap;
+  font-size: clamp(3.2rem, 14.5vw, 9.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.01em;
 }
 
+/* "The Fifth Chapter." as a festival sticker: solid magenta, always legible over any photo */
 .hero__title-accent {
-  font-size: clamp(2rem, 8vw, 7rem);
-  line-height: 0.95;
-  color: transparent;
-  background: linear-gradient(
-    120deg,
-    var(--brand-magenta),
-    #ff6fb3 60%,
-    var(--brand-cream)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-.hero__meta {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--fs-md);
-  color: #ffffff;
-  letter-spacing: 0.01em;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0.38em 0.75em 0.3em;
+  border-radius: 0.4em;
+  background: var(--brand-magenta);
+  color: var(--brand-cream);
+  font-size: clamp(1.1rem, 3.8vw, 2.6rem);
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: none;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+  box-shadow: 0 12px 34px rgba(251, 3, 118, 0.4);
 }
 
 .hero__desc {
@@ -327,14 +363,14 @@
   font-size: var(--fs-sm);
   color: #ffffff;
   max-width: 42ch;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
 }
 
 .hero__actions {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-sm);
-  margin-top: var(--space-2xs);
 }
 
 .hero__actions .btn {
@@ -342,8 +378,9 @@
 }
 
 .hero__actions .btn-secondary {
-  min-width: 14rem;
-  justify-content: center;
+  min-width: 12rem;
+  background: rgba(255, 244, 210, 0.08);
+  border-color: rgba(255, 244, 210, 0.45);
 }
 
 .hero__actions .btn-primary:hover,
@@ -360,19 +397,77 @@
   outline: none;
 }
 
-.hero__scroll {
+/* Bottom bar: scroll cue (left) + photo counter and progress ticks (right) */
+.hero__foot {
   position: absolute;
-  left: var(--container-pad);
+  inset-inline: 0;
   bottom: var(--space-lg);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  pointer-events: none;
+}
+
+.hero__foot > * {
+  pointer-events: auto;
+}
+
+.hero__progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--brand-cream);
+  font-family: var(--font-body);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.hero__count b {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.hero__ticks {
+  display: flex;
+  align-items: center;
+}
+
+.hero__tick {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.65rem 0.12rem;
+  border: 0;
+  background: rgba(255, 244, 210, 0.45);
+  background-clip: content-box;
+  cursor: pointer;
+  transition:
+    width var(--transition-medium),
+    background-color var(--transition-medium);
+}
+
+.hero__tick.is-active {
+  width: 2.8rem;
+  background-color: var(--brand-magenta);
+}
+
+.hero__tick:focus-visible {
+  outline: 2px solid var(--brand-cream);
+  outline-offset: 2px;
+}
+
+.hero__scroll {
   display: flex;
   align-items: center;
   gap: var(--space-2xs);
   font-size: var(--fs-2xs);
   font-weight: 600;
-  color: var(--color-muted);
+  color: var(--brand-cream);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .hero__scroll-line {
@@ -440,15 +535,32 @@
   .hero__pattern-track {
     animation: none;
   }
+  .hero__kicker-dot {
+    animation: none;
+  }
 }
 
 @media (max-width: 560px) {
-  .hero__scroll {
+  .hero__foot {
     bottom: 1.25rem;
-    font-size: 0.65rem;
+  }
+  .hero__scroll span:last-child {
+    display: none;
+  }
+  .hero__count {
+    display: none;
+  }
+  .hero__tick {
+    width: 1rem;
+  }
+  .hero__tick.is-active {
+    width: 2rem;
   }
   .hero__content {
     padding-bottom: 5rem;
+  }
+  .hero__actions .btn {
+    flex: 1 1 100%;
   }
   .hero__overlay {
     background:

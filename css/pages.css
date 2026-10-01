@@ -149,25 +149,50 @@
 }
 
 .medfest-v {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   padding-block: clamp(5rem, 11vw, 10rem);
   background: var(--brand-purple);
   color: #ffffff;
 }
 
+/* oversized outlined "V" behind the content */
+.medfest-v__ghost {
+  position: absolute;
+  right: -2vw;
+  bottom: -0.22em;
+  z-index: -1;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(22rem, 52vw, 52rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 244, 210, 0.16);
+  pointer-events: none;
+  user-select: none;
+}
+
 .medfest-v__layout {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
 }
 
 .medfest-v__content {
   display: grid;
+  justify-items: start;
   gap: var(--space-md);
-  max-width: 52rem;
-  margin-inline: auto;
+  max-width: 36rem;
+}
+
+.medfest-v__label {
+  color: var(--brand-cream);
 }
 
 .medfest-v__content h2 {
-  max-width: 8ch;
-  font-size: clamp(4rem, 9vw, 8rem);
+  font-size: clamp(3.6rem, 9vw, 8rem);
   line-height: 0.84;
   text-transform: uppercase;
 }
@@ -177,31 +202,262 @@
   font-style: normal;
 }
 
-.medfest-v__content p:not(.section-label) {
-  max-width: 40ch;
+.medfest-v__content .medfest-v__lead {
+  max-width: 24ch;
   color: #ffffff;
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2.3vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.medfest-v__content .medfest-v__copy {
+  max-width: 44ch;
+  color: rgba(255, 255, 255, 0.92);
   font-size: var(--fs-sm);
   line-height: 1.8;
 }
 
-.medfest-v__content .medfest-v__lead {
-  color: #ffffff;
-  font-family: var(--font-body);
-  font-size: clamp(1.35rem, 2.5vw, 2rem);
+/* editions timeline: I -> 2.0 -> 3.0 -> 4.0 -> V */
+.medfest-v__timeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block: var(--space-2xs);
+}
+
+.medfest-v__timeline li {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 4.1rem;
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid rgba(255, 244, 210, 0.28);
+  border-radius: 0.9rem;
+  background: rgba(0, 0, 0, 0.14);
+  text-align: center;
+}
+
+.medfest-v__timeline b {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1;
+  color: var(--brand-cream);
 }
 
+.medfest-v__timeline span {
+  font-family: var(--font-body);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.medfest-v__timeline .is-next {
+  background: var(--brand-magenta);
+  border-color: transparent;
+  box-shadow: 0 10px 28px rgba(251, 3, 118, 0.4);
+}
+
+.medfest-v__timeline .is-next span {
+  color: #ffffff;
+}
+
+/* CTA: cream pill with a magenta arrow disc.
+   Colour effect: a soft magenta tint drifts across the pill and the arrow disc
+   slowly shifts magenta <-> purple. On hover / tap / keyboard focus the pill
+   fills magenta. Works on touch (no hover needed) and on desktop. */
 .medfest-v__cta {
-  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
   margin-top: var(--space-2xs);
-  color: #ffffff;
+  padding: 0.55rem 0.55rem 0.55rem 1.7rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--brand-cream);
+  background-image: linear-gradient(
+    100deg,
+    rgba(251, 3, 118, 0) 0%,
+    rgba(251, 3, 118, 0.2) 50%,
+    rgba(102, 45, 145, 0) 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  color: var(--brand-black);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  -webkit-tap-highlight-color: transparent;
+  animation: ctaTint 5s ease-in-out infinite;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-medium),
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
-.medfest-v__cta:hover,
-.medfest-v__cta:active {
-  background: var(--brand-black);
+.medfest-v__cta-dot {
+  display: grid;
+  place-items: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  background: var(--brand-magenta);
   color: #ffffff;
+  font-size: 1.15rem;
+  animation: ctaDot 5s ease-in-out infinite;
+  transition:
+    transform var(--transition-medium),
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+@keyframes ctaTint {
+  0%,
+  100% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes ctaDot {
+  0%,
+  100% {
+    background-color: var(--brand-magenta);
+  }
+  50% {
+    background-color: var(--brand-purple);
+  }
+}
+
+/* active / focus: works for touch taps and keyboard users */
+.medfest-v__cta:active,
+.medfest-v__cta:focus-visible {
+  background-color: var(--brand-magenta);
+  background-image: none;
+  color: #ffffff;
+  animation: none;
+}
+
+.medfest-v__cta:active .medfest-v__cta-dot,
+.medfest-v__cta:focus-visible .medfest-v__cta-dot {
+  background-color: var(--brand-cream);
+  color: var(--brand-magenta);
+  animation: none;
+}
+
+.medfest-v__cta:focus-visible {
+  outline: 3px solid var(--brand-cream);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .medfest-v__cta:hover {
+    background-color: var(--brand-magenta);
+    background-image: none;
+    color: #ffffff;
+    animation: none;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+  }
+  .medfest-v__cta:hover .medfest-v__cta-dot {
+    background-color: var(--brand-cream);
+    color: var(--brand-magenta);
+    animation: none;
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .medfest-v__cta,
+  .medfest-v__cta-dot {
+    animation: none;
+  }
+}
+
+/* polaroid collage */
+.medfest-v__collage {
+  position: relative;
+  min-height: clamp(26rem, 44vw, 38rem);
+}
+
+.medfest-v__pol {
+  position: absolute;
+  width: 52%;
+  padding: 0.7rem 0.7rem 0;
+  border-radius: 0.5rem;
+  background: var(--brand-cream);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.38);
+}
+
+.medfest-v__pol img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+.medfest-v__pol figcaption {
+  padding: 0.7rem 0.2rem 0.8rem;
+  color: var(--brand-black);
+  font-family: var(--font-body);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.medfest-v__pol--1 {
+  top: 0;
+  left: 0;
+  transform: rotate(-5deg);
+}
+
+.medfest-v__pol--2 {
+  top: 8%;
+  right: 0;
+  z-index: 1;
+  transform: rotate(4deg);
+}
+
+.medfest-v__pol--3 {
+  bottom: 0;
+  left: 26%;
+  z-index: 2;
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 860px) {
+  .medfest-v__layout {
+    grid-template-columns: 1fr;
+  }
+  .medfest-v__content {
+    max-width: none;
+  }
+  .medfest-v__collage {
+    min-height: 26rem;
+    max-width: 30rem;
+    width: 100%;
+    margin-inline: auto;
+  }
+  .medfest-v__pol {
+    width: 56%;
+  }
+}
+
+@media (max-width: 420px) {
+  .medfest-v__timeline li {
+    min-width: 3.4rem;
+    padding: 0.55rem 0.6rem;
+  }
+  .medfest-v__collage {
+    min-height: 22rem;
+  }
 }
 
 .experience-section {

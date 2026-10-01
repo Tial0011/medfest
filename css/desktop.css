@@ -24,7 +24,7 @@ main img { max-width: 100%; }
 /* Homepage hero: always leave breathing room under the nav, even on short laptop screens */
 @media (min-width: 900px) {
   .hero { min-height: max(calc(92svh - var(--nav-height)), 40rem); }
-  .hero__content { padding-top: 3.5rem; padding-bottom: 6rem; }
+  .hero__content { padding-top: 2.5rem; padding-bottom: 6rem; }
 }
 
 /* Short laptop screens: show the start of the content cards on the first screen */

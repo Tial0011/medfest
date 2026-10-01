@@ -113,6 +113,24 @@ function initHeroSlider() {
   let currentIndex = 0;
   let timer;
 
+  // Slide counter + clickable progress ticks
+  const ticksWrap = Utils.qs("[data-hero-ticks]");
+  const currentLabel = Utils.qs("[data-hero-current]");
+  const totalLabel = Utils.qs("[data-hero-total]");
+  const pad = (n) => String(n).padStart(2, "0");
+  if (totalLabel) totalLabel.textContent = pad(slides.length);
+  const ticks = ticksWrap
+    ? slides.map((_, i) => {
+        const tick = document.createElement("button");
+        tick.type = "button";
+        tick.className = "hero__tick";
+        tick.setAttribute("aria-label", "Show photo " + (i + 1));
+        tick.addEventListener("click", () => showSlide(i));
+        ticksWrap.appendChild(tick);
+        return tick;
+      })
+    : [];
+
   function loadSlide(slide) {
     if (slide.dataset.srcset) {
       slide.srcset = slide.dataset.srcset;
@@ -131,6 +149,10 @@ function initHeroSlider() {
     slides.forEach((slide, slideIndex) => {
       slide.classList.toggle("is-active", slideIndex === currentIndex);
     });
+    ticks.forEach((tick, i) =>
+      tick.classList.toggle("is-active", i === currentIndex),
+    );
+    if (currentLabel) currentLabel.textContent = pad(currentIndex + 1);
     restartTimer();
   }
 

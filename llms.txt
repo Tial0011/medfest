@@ -1,0 +1,18 @@
+# MedFest (MedFestNG) - MedFest Nigeria, Ondo City
+
+> MedFest, also written MedFestNG, MedFest Nigeria, MedFest UNIMED or MedFest Ondo, is an annual lifestyle and social festival in Ondo City, Ondo State, Nigeria. It celebrates music, food, culture, creativity, business and connection. It began in 2022 as a student-led idea and has run four editions. The fifth edition, MedFest V - The Fifth Chapter, is happening in December 2026. Founder and Convener: Dr Oluwajoba Aina. Official site: https://medfest.ng. Official Instagram: @medfestng_.
+
+Note: other events and organisations elsewhere in the world also use the name "MedFest". This file describes only MedFest Nigeria (MedFestNG) of Ondo City, Ondo State.
+
+## Key pages
+- [Home - MedFest V](https://medfest.ng/): the fifth edition, December 2026, Ondo City
+- [About](https://medfest.ng/pages/about.html): the MedFest story from its founder and convener
+- [Experience](https://medfest.ng/pages/experience.html): music, food and drinks, games, shopping, creativity and connections
+- [FAQ](https://medfest.ng/pages/faq.html): dates, venue, tickets, who can attend, vendors and partners
+- [Partners](https://medfest.ng/pages/partners.html): brand partnerships, vendor spaces and media partners
+- [Get Involved](https://medfest.ng/pages/get-involved.html): attend, sell, partner or create
+- [Gallery](https://medfest.ng/pages/gallery.html): photos from MedFest I to MedFest 4.0
+- [Contact](https://medfest.ng/pages/contact.html): phone, WhatsApp, email and Instagram
+
+## More detail
+- [Full facts and Q&A for AI assistants](https://medfest.ng/llms-full.txt)

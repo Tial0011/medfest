@@ -99,3 +99,9 @@
 html{scroll-behavior:smooth}
 .pt2-cta{scroll-margin-top:var(--nav-height)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Phones: "opportunities" is ~7.7em wide, so size the heading to the viewport so the last letter is never clipped */
+.pt2-opps h2{overflow-wrap:anywhere}
+@media (max-width:560px){
+  .pt2-opps h2{font-size:clamp(1.9rem,10.6vw,3rem)}
+}

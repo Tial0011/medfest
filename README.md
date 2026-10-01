@@ -56,9 +56,9 @@ medfest/
 │   └── main.js                 → Mounts components + wires up interactions on every page
 ├── assets/
 │   ├── images/, videos/, icons/, fonts/  → Drop real media here as it's produced
-├── seo/
-│   ├── robots.txt
-│   └── sitemap.xml
+├── robots.txt, sitemap.xml  → crawler files (must live in the site root)
+├── llms.txt, llms-full.txt  → plain-text facts for AI assistants
+├── SEO-README.md            → SEO checklist: Search Console, Bing, AI visibility
 └── README.md
 ```
 
@@ -122,10 +122,7 @@ All brand-derived tokens live in `css/variables.css`:
 ## SEO
 
 `index.html` and every page in `pages/` ship semantic headings, a descriptive
-`<title>`/meta description, Open Graph tags, and a canonical URL. `seo/robots.txt` and
-`seo/sitemap.xml` use a placeholder domain (`medfestng.com`) — update it once the real
-domain is confirmed, and note that both files should be **deployed at the site root**
-(`/robots.txt`, `/sitemap.xml`) even though they're authored under `seo/` here.
+`<title>`, meta description, canonical URL, Open Graph/Twitter tags and JSON-LD structured data live in each page's `<head>`. `robots.txt` and `sitemap.xml` sit in the site root. See **SEO-README.md** for everything SEO.
 
 ## What's _not_ built yet
 

@@ -42,6 +42,7 @@
 .ct-tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
 .ct-tile{grid-column:span 2;position:relative;display:flex;flex-direction:column;gap:.35rem;min-height:14rem;padding:1.4rem;border-radius:1rem;color:#fff;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
 .ct-tile:nth-child(-n+2){grid-column:span 3}
+@media (min-width:821px){.ct-tiles--six .ct-tile{grid-column:span 3}}
 .ct-tile--magenta{background:var(--brand-magenta)}
 .ct-tile--purple{background:#4d2170;border:2px solid rgba(255,244,210,.35)}
 .ct-tile--cream{background:var(--brand-cream);color:var(--brand-black)}

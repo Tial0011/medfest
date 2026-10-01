@@ -81,12 +81,11 @@
   border-radius: 50%;
   color: #ffffff;
 }
-.mf-footer__icon:nth-child(2) {
+.mf-footer__icon:nth-child(even) {
   background: rgba(102, 45, 145, 0.45);
   border-color: #9860c0;
 }
-.mf-footer__icon:nth-child(1),
-.mf-footer__icon:nth-child(3) {
+.mf-footer__icon:nth-child(odd) {
   background: rgba(251, 3, 118, 0.13);
   border-color: rgba(251, 3, 118, 0.6);
 }

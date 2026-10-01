@@ -37,6 +37,7 @@ const SITE = {
     enquiries: { label: "07045567948", href: "tel:+2347045567948" },
     email: "medfestunimed@gmail.com",
     instagram: { handle: "medfestng_", href: "https://www.instagram.com/medfestng_/" },
+    tiktok: { handle: "medfest.v", href: "https://www.tiktok.com/@medfest.v" },
     whatsapp: [
       { label: "07047157003", href: "https://wa.me/2347047157003" },
       { label: "07045567948", href: "https://wa.me/2347045567948" },

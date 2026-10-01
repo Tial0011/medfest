@@ -12,6 +12,7 @@
       '<p class="tk-text">Ticket prices and the exact date will be announced soon. Follow us or message us on WhatsApp so you don&rsquo;t miss the early-bird announcement.</p>' +
       '<div class="tk-actions">' +
       '<a class="tk-btn tk-btn--main" href="https://www.instagram.com/medfestng_/" target="_blank" rel="noopener">Follow @medfestng_</a>' +
+      '<a class="tk-btn tk-btn--alt" href="https://www.tiktok.com/@medfest.v" target="_blank" rel="noopener">Follow @medfest.v on TikTok</a>' +
       '<a class="tk-btn tk-btn--alt" href="https://wa.me/2347045567948?text=Hello%20MedFest%2C%20please%20let%20me%20know%20when%20tickets%20are%20available." target="_blank" rel="noopener">Message us on WhatsApp</a>' +
       '</div>';
     document.body.appendChild(dlg);

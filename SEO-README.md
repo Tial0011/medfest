@@ -82,7 +82,7 @@ Do these consistently:
 1. **Always write the full name in public places:** "MedFest Nigeria (MedFestNG) — Ondo City".
    Use it in your Instagram bio, captions, pinned post, flyers and press notes.
 2. **Link your website in every profile** (Instagram bio link, TikTok, X, Facebook, LinkedIn, YouTube, WhatsApp Business).
-   Use the same name and logo everywhere. When you add new profiles, add their links to `sameAs` in the Organization JSON-LD on every page.
+   Use the same name and logo everywhere. When you add new profiles, add their links to `sameAs` in the Organization JSON-LD on every page (Instagram and TikTok are already there).
 3. **Get listed:** Google Business Profile (if you have a base address), Eventbrite/Tix Africa/other Nigerian event listings once tickets are live, local Ondo and Nigerian event blogs, student union / UNIMED community pages.
 4. **Get backlinks:** sponsors, vendors and partners should link to medfest.ng from their sites and posts. Every partner announcement = one link.
 5. **Use the keywords naturally in social posts and hashtags:** #MedFestNG #MedFestV #MedFestOndo.

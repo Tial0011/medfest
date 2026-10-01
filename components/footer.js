@@ -6,6 +6,8 @@ function renderFooter(mount) {
   const icons = {
     instagram:
       '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>',
+    tiktok:
+      '<path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>',
     whatsapp:
       '<path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.7A8.5 8.5 0 1 1 20.5 11.5Z"/><path d="M8 7.5c0 4.5 3.5 8 8 8l1-2.5-3-1-1 1a8 8 0 0 1-2.5-2.5l1-1-1-3Z"/>',
     email:
@@ -26,6 +28,7 @@ function renderFooter(mount) {
             <p class="mf-footer__tagline">The Fifth Chapter.</p>
             <div class="mf-footer__socials">
               <a class="mf-footer__icon" href="${footer.instagram.href}" aria-label="Instagram: @${footer.instagram.handle}" title="Instagram">${icon("instagram")}</a>
+              <a class="mf-footer__icon" href="${footer.tiktok.href}" aria-label="TikTok: @${footer.tiktok.handle}" title="TikTok">${icon("tiktok")}</a>
               <a class="mf-footer__icon" href="https://wa.me/2347045567948" aria-label="WhatsApp +234 704 556 7948" title="WhatsApp +234 704 556 7948">${icon("whatsapp")}</a>
               <a class="mf-footer__icon" href="mailto:${footer.email}" aria-label="Email partnerships: ${footer.email}" title="Email partnerships">${icon("email")}</a>
               <div class="mf-footer__phones">
